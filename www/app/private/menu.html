@@ -1,0 +1,63 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content id="nav-view-pages">
+    <ion-nav-bar class=" primary-color white-text text-center" style="top:0 !important">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left" ng-click="openDrawer()">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+  <drawer side="left" ng-click="closeDrawer()">
+
+    <ion-content class="side-drawer-content primary-color text-roboto">
+
+      <h4 class=" text-center"><i class="material-icons large white-text text-center">account_circle</i><br><small class="white-text ">{{user.email}}</small></h4>
+      <hr class="no-margin">
+
+      <div class="list white-text">
+    <!--     <a class="item white font-lighter light-blue-text text-darken-4" href="#" ng-click="closeDrawer()" ui-sref="app.dashboard">
+            <div class="row no-margin">
+                <span class="col col-50 text-center" ><sapn>Bid</sapn><br><span>Ƀ 0.1234</span></span>
+                <span class="col col-50 text-center" style="border-left: 1px solid;"><sapn>Sell</sapn><br><span>Ƀ 0.1234</span></span>
+            </div>
+        </a> -->
+        <a class="item item-icon-left font-lighter text-light valign-wrapper" href="#" ng-click="closeDrawer()" ui-sref="app.dashboard">
+            <i class="icon small material-icons">dashboard</i>
+            Dashboard
+        </a>
+        <a class="item item-divider font-lighter blue-grey-text text-lighten-5" href="#">
+            Accounts
+          </a>
+        <a class="item item-icon-left font-lighter " href="#" ng-click="closeDrawer()" ui-sref="app.btcvault">
+            <i class="icon small material-icons">account_balance_wallet</i>
+            BTC Wallet
+          </a>
+        <a class="item item-icon-left font-lighter " href="#" ng-click="closeDrawer()" ui-sref="app.cryptovault">
+            <i class="icon small material-icons">account_balance_wallet</i>
+            {{baseCoin}} Wallet
+          </a>
+        <a class="item item-divider font-lighter  blue-grey-text text-lighten-5" href="#">
+            More
+          </a>
+        <a class="item font-lighter item-icon-left" href="#" ng-click="closeDrawer()" ui-sref="app.setting">
+            <i class="icon small ion-ios-gear-outline"></i>
+            Settings
+          </a>
+
+        <!-- <a class="item font-lighter item-icon-left" href="#"  href="#" ng-click="closeDrawer()"> 
+            <i class="icon ion-person-stalker"></i>
+            AboutUs
+          </a> -->
+        <a class="item font-lighter item-icon-left" href="#" ng-click="logout()">
+            <i class="icon small material-icons">power_settings_new</i>
+            Logout
+          </a>
+
+      </div>
+    </ion-content>
+  </drawer>
+</ion-side-menus>

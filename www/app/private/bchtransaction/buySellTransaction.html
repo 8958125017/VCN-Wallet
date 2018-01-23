@@ -1,0 +1,45 @@
+<ion-view view-title="Buy/Sell Orders">
+  <ion-pane>
+
+    <ion-content class="white">
+
+      <div ng-repeat="all in data | orderBy : '-time'">
+
+        <div ng-show="all.category == 'move' && all.amount < 0" class="card  white-text blue lighten-1 margin padding-left padding-right">
+          <div class="row no-margin">
+
+            <span class=" white-text font-lighter">Sell</span><br>
+          </div>
+          <div class="row no-margin">
+            <div class="col-50 valign-wrapper">
+
+              <h6 class="valign-wrapper  white-text">{{all.time* 1000 | date:'dd-MM-yy HH:mm'}}</h6>
+            </div>
+            <div class="col-50 no-margin">
+              <span class="font-20 white-text pull-right">{{all.amount}} {{baseCoin}}</span>
+            </div>
+          </div>
+        </div>
+
+        <div ng-show="all.category == 'move' && all.amount > 0" class="card white-text orange lighten-1 margin padding-left padding-right">
+          <div class="row no-margin">
+
+            <span class="font-lighter white-text ">Buy</span><br>
+          </div>
+          <div class="row no-margin">
+            <div class="col-50 valign-wrapper">
+
+              <h6 class="valign-wrapper white-text ">{{all.time* 1000 | date:'dd-MM-yy HH:mm'}}</h6>
+            </div>
+            <div class="col-50 no-margin">
+              <span class="font-20 white-text  pull-right">{{all.amount}} {{baseCoin}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+       <div ng-hide="all.category != 'receive'" style="margin-top: 100px;">
+          <img src="../../img/empty.jpg" width="100%" class="pull-left">
+        </div>
+    </ion-content>
+  </ion-pane>
+</ion-view>

@@ -1,0 +1,37 @@
+<ion-view view-title="{{targetCoin}} wallet">
+  <ion-content>   
+    <div class="primary-color white-text padding">
+      <div class="row">
+        <h4 class="col white-text no-margin text-roboto"><span class="crypto-icon crypto-vault-symbol">{{targetCoinShortName}}&nbsp;</span>{{user.BTCbalance | number:5}}</h4>
+        <img src="http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl={{user.userBTCAddress}}" alt="QR Code" style="height: 10%; width: 10%;" ng-click="showConfirm()">
+      </div>
+      <div class="row no-margin">
+        <div class="col col-66  white-text">
+         <!--  <small style="color: #ffffff">Freezed {{targetCoin}} Balance </small><br><span class="">{{targetCoinShortName}}&nbsp;</span>{{user.FreezedBTCbalance | number:5}} -->
+        </div>
+      </div>
+    </div>
+    
+      <div class="list" style="background: #ececec;">
+          <a class="item item-avatar" ui-sref="app.btcsent">
+              <img src="img/Bitcoin_Logo.png">
+              <h2>Sent Transactions</h2>
+              <p>Last Sent</p>
+          </a><hr class="no-margin" >
+          <a class="item item-avatar" ui-sref="app.btcreceived">
+              <img src="img/Bitcoin_Logo.png">
+              <h2>Received Transactions</h2>
+              <p>Last Received</p>
+          </a>
+      </div>
+  </ion-content>
+  <div class="fixed-action-btn toolbar">
+    <a class="btn-floating btn-large primary-color">
+          <i class="large material-icons">import_export</i>
+        </a>
+    <ul>
+      <li class="waves-effect waves-light" ui-sref="app.sendreciveBTC"><a href="#!"><i class="material-icons">send</i>&nbsp;&nbsp;<span class="valign-text-bottom">Send</span></a></li>
+      <li class="waves-effect waves-light" ui-sref="app.requestBTC"><a href="#!"><i class="material-icons">record_voice_over</i>&nbsp;&nbsp;<span class="valign-text-bottom">Request</span></a></li>
+    </ul>
+  </div>
+</ion-view>

@@ -1,0 +1,105 @@
+<ion-view view-title="Dashboard">
+  <ion-content style="overflow-y: hidden !important;" class="primary-color">
+
+    
+  
+    <ion-refresher on-refresh="doRefresh()">
+    </ion-refresher>
+    <div class="primary-color white-text padding-top ">
+      <div class="row center no-margin">
+        <h5 class="center col white-text text-roboto">{{baseCoin}}/{{targetCoin}} Market</h5>
+      </div>
+
+    </div>
+    <div  class="primary-color white-text" style="width:100%; height:400px;color:#fff !important">
+
+
+
+    <div class=" primarytext-color text-darken-4 white padding-balance no-margin" >
+
+      <div class="row">
+            <div class="col col-25">
+            </div>
+
+            <div class="col col-50 text-center" style="margin-top: 49px">
+              <span class="crypto-icon">{{baseCoinShortName}}&nbsp;</span><span class="font-25 font-lighter">{{user.BCHbalance | number:7}}</span>            
+            </div>
+
+            <div class="col col-25">
+            </div>
+
+      </div>
+
+      <div class="row" style="background-color: #ffffff;margin-top: 44px">
+          <div class="col col-50" style="text-align: center;">
+            <button class="button dashboard-button" ui-sref="app.sendreceivecrypto">
+               <span class="green-white">Send VCN</span>
+            </button>
+          </div>
+          
+          <div class="col col-50" style="text-align: center;">
+            <button class="button dashboard-button" ui-sref="app.requestcrypto">
+               <span class="green-white">Receive VCN</span>
+            </button>
+          </div>
+      </div>
+
+      <div class="row" style="background-color: #ffffff;margin-top: 56px">
+           <button class="button dashboard-button" ng-click="getCrypto()" block style="margin-left: 22px">
+                <span class="green-white">Get VCN</span>
+              </button>
+      </div>
+
+    </div>
+      
+
+
+
+
+       <hr class="no-margin">
+
+       <div class="primary-color text-white  padding-balance no-margin" id="downDiv" >
+
+            <div class="row">
+              <div class="col col-33">
+              </div>
+
+              <div class="col col-33">
+              </div>
+
+             
+ 
+            </div>
+
+        
+
+            <div class="row">
+                <div class="col col-25">
+              </div>
+
+              <div class="col col-50 text-center"  class="show-balance" style="margin-top: -19px !important">
+                <span class="crypto-icon">{{targetCoinShortName}}&nbsp;</span><span class="font-25">{{user.BTCbalance | number:7}}</span>
+              </div>
+
+              <div class="col col-25">
+              </div>
+
+            </div>
+            
+            <div class="row primary-color" style="background-color: #ffffff; padding-top: 30x !important" id="upMe">
+                 <div class="col col-50" style="text-align: center;">
+                   <button class="button button-positive button-bkbround dashboard-button" ui-sref="app.sendreciveBTC">
+                       Send BTC
+                    </button>
+                </div>
+                 <div class="col col-50" style="text-align: center;">
+                    <button class="button button-positive button-bkbround dashboard-button" ui-sref="app.requestBTC">
+                       Receive BTC
+                    </button>
+                </div>
+           </div>
+
+       </div>   
+  </ion-content>
+
+</ion-view>

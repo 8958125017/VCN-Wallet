@@ -1,0 +1,58 @@
+<ion-view view-title="Ask {{baseCoin}}">
+  <ion-content class="relative-position">
+    <div class="primary-color white-text padding">
+      <div class="row">
+        <h4 class="col s12 white-text">{{user.BCHbalance | number:7}} {{baseCoin}}</h4>
+      </div>
+      <div class="row">
+        <span class="col s12 white-text">{{user.BTCbalance | number:7}} {{targetCoin}}</span>
+        <span class="pull-right">1 {{baseCoin}} = {{currentPriceOfBTCtemp.bid | number:8}} {{targetCoin}}</span>
+      </div>
+    </div>
+    <form>
+        <div class="row no-margin ">
+            <div class="col-25 valign-wrapper">
+              <span class="valign-wrapper">Amount({{baseCoin}})</span>
+            </div>
+            <div class="col-75">
+                
+                  <div class="row no-margin trade">
+                    <input id="amount" type="number" step="0.00001" ng-model="askCryptoAmount.askAmountBCH" class=" font-40 text-right no-border no-margin valign-wrapper" placeholder="0.00000" decimal-places>
+                    
+                  </div>
+                
+            </div>
+        </div><hr>
+        <div class="row no-margin">
+            <div class="col-25 valign-wrapper">
+              <span class="valign-wrapper">Ask Rate</span>
+            </div>
+            <div class="col-75">
+                
+                  <div class="row no-margin trade">
+                    <input id="amount" type="number" step="0.00001" ng-model="askCryptoAmount.askRate" ng-change="myFunc(askCryptoAmount.askAmountBCH * askCryptoAmount.askRate)" class="font-40 text-right no-border no-margin valign-wrapper" placeholder="0.00000" decimal-places decimal-places>
+                  </div>
+                
+            </div>
+        </div><hr>
+        <div class="row no-margin">
+          <div class="col-25 valign-wrapper">
+              <span class="valign-wrapper">Amount({{targetCoin}})</span>
+            </div>
+            <div class="col-75 ">
+                  <div class="row no-margin trade">
+                    <input id="amount" type="number" step="0.00001"  class=" font-40 text-right no-border no-margin valign-wrapper" placeholder="0.00000" decimal-places value="{{askCryptoAmount.askAmountBTC | number: 5}}" disabled>
+                  </div>
+                
+            </div>
+        </div><hr>
+        <div class="row">
+          <div class="input-field col s12 center">
+            <button class="btn waves-effect waves-light primary-color white-text" type="submit" name="action" ng-click="askAmountAction(askCryptoAmount)">Confirm Ask
+                <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </div>
+    </form>   
+  </ion-content>
+</ion-view>

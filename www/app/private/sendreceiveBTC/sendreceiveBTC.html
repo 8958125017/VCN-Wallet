@@ -1,0 +1,50 @@
+<ion-view view-title="Send & Receive {{targetCoin}}">
+
+  <ion-content class="relative-position">
+    <div class="primary-color white-text padding">
+      <div class="row">
+        <h4 class="col white-text no-margin text-roboto"><span class="crypto-icon crypto-vault-symbol">{{targetCoinShortName}}&nbsp;</span>{{user.BTCbalance | number:5}}</h4>
+        <img src="http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl={{userBTCAddress.userBTCAddress}}" alt="QR Code" style="height: 10%; width: 10%;" ng-click="showConfirm()">
+      </div>
+      <div class="row no-margin">
+        <div class="col col-66  white-text">
+         <!--  <small style="color: #a9a9a9">Freezed {{targetCoin}} Balance </small><br><span class="">{{targetCoinShortName}}&nbsp;</span>{{user.FreezedBTCbalance | number:5}} -->
+        </div>
+      </div>
+    </div>
+    <div class="row">
+
+       <form class="col s12 center" name="frm" novalidate>    
+     <div class="row no-margin form-group">
+       <div class="custom-input-focus-color input-field col s12">   
+      <input type="text" class="form-control validate" ng-model="values.recieverBTCCoinAddress" name="recieverBTCCoinAddress" autocomplete="off" required>
+       <label for="txId" class="col center" id="focusBtcAddress">Address</label>
+      <span style="color:red ;margin-left: -276px;" ng-show="frm.recieverBTCCoinAddress.$dirty && frm.recieverBTCCoinAddress.$error.required">Address is Required</span>
+      </div>
+     </div>
+
+
+    <div class="row no-margin form-group">
+       <div class="custom-input-focus-color input-field col s12">   
+     <input type="number" class="form-control validate" ng-model="values.amount" name="amount" autocomplete="off" required>
+       <label for="amount" class="col center" id="focusBtcAmount">Amount({{targetCoin}})</label>
+      <span style="color:red ;margin-left: -222px;" ng-show="frm.amount.$dirty && frm.amount.$error.required">Amout Should Not be Empty</span>
+    </div>
+     </div>
+      <button class="btn waves-effect waves-light light-blue-text darken-4-text white" type="submit" name="action" ng-disabled="frm.$invalid" ng-click="sendBTCCoinByUser(values)" >Submit
+        <i class="material-icons right">send</i>
+      </button>
+    </form>
+
+
+    
+    </div>
+  </ion-content>
+  <div class="fixed-action-btn ">
+    <a class="btn-floating btn-large primary-color" ng-click="scanBarCode()">
+      <i class="material-icons">camera_alt</i>
+    </a>
+  </div>
+
+
+</ion-view>

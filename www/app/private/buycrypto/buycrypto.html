@@ -1,0 +1,39 @@
+<ion-view view-title="Buy {{baseCoin}}">
+
+  <ion-content class="relative-position">
+    <div class="primary-color white-text padding">
+      <div class="row">
+        <h4 class="col white-text no-margin text-roboto"><span class="crypto-icon crypto-vault-symbol">{{baseCoinShortName}}&nbsp;</span>{{user.BCHbalance | number:5}}</h4>
+        
+      </div>
+      <div class="row no-margin">
+        <div class="col col-50  white-text">
+          <small style="color: #b6efe8">Freezed {{baseCoin}} Balance </small><br><span class="">{{baseCoinShortName}}&nbsp;</span>{{user.FreezedBCHbalance | number:5}}
+        </div>
+        <span class="pull-right valign-wrapper">1 {{baseCoin}} = {{currentPriceOfBTCtemp.ask +.002 | number:5}} BTC</span>
+      </div>
+    </div>
+    <div class="row ">
+      <form class="col s12 center ">
+
+        <div class="row ">
+          <div class="input-field col s12 ">
+            <input  type="number" step="0.00001" ng-model="buyAmountSend.buyAmountBCH" ng-change="myFunc(buyAmountSend.buyAmountBCH) ">
+            <label for="address ">Amount Of {{baseCoin}}</label>
+          </div>
+        </div>
+        <div class="row ">
+          <div class="input-field col s12 ">
+            <input  type="text"  ng-model="buyAmountSend.buyAmountBTC" disabled> 
+            <label for="amount " id="buyCryptoFocus">Amount of BTC</label>
+          </div>
+        </div>
+        <button class="btn waves-effect waves-light primary-color white-text" type="submit " name="action " ng-click="buyAmountAction(buyAmountSend) ">Submit
+          <i class="material-icons right ">send</i>
+        </button>
+      </form>
+    </div>
+
+  </ion-content>
+
+</ion-view>

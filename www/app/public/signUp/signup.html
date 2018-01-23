@@ -1,0 +1,75 @@
+<ion-view>
+
+  <ion-content class="primary-color">
+    <div class="logo center padding-top no-margin">
+      <h1 class="white-text font-lighter no-margin">{{appName}}</h1>
+    </div>
+    <div class="padding-top padding-left no-margin">
+      <h4 class="white-text font-lighter no-margin">Welcome !!</h4>
+    </div>
+
+
+    <form class="col s12 center" name="frm" novalidate>
+
+
+     <div class="row no-margin form-group">
+       <div class="custom-input-focus-color input-field col s12">   
+     <input type="email" class="form-control validate white-text" ng-model="user.email" name="email" autocomplete="off" required>
+       <label for="address" class="col center white-text">Email</label>
+      <span style="color:red;margin-left: -260px;" ng-show="frm.email.$dirty && frm.email.$invalid">Email Address is not valid</span>
+    </div>
+     </div>
+
+   
+
+    <div class="row no-margin form-group">
+        <div class="custom-input-focus-color input-field col s12">
+             <input type="password" class="form-control validate white-text" ng-model="user.password" name="password"  autocomplete="off" ng-minlength="6" ng-maxlength="16" required>
+             <label for="amount" class="col center white-text">Password</label>
+              <span style="color:red;margin-left: -148px;" ng-show="frm.password.$dirty && frm.password.$error.minlength">Password must contain atleast 6 charecters</span>
+              <span style="color:red;margin-left: -215px;" ng-show="frm.password.$dirty && frm.password.$error.maxlength">Max-length of password reached</span>
+          </div>
+     </div>
+
+
+      <div class="row no-margin">
+        <div class="custom-input-focus-color input-field col s12">
+          <input id="confirm_password" type="password" ng-model="user.confirmPassword"  required class="form-control validate white-text" ng-change="passwordMatch(user.password)">
+          <label for="amount" class="col center white-text">Confirm Password</label>
+           <span style="color:red;margin-left: -260px;" ng-show="frm.user.confirmPassword.$error.required">Required</span>
+        <span style="color:red;margin-left: -260px;" ng-show="noData">Passwords do not match.</span>
+        </div>
+      </div>
+
+
+      <div class="row no-margin form-group">
+        <div class="custom-input-focus-color input-field col s12">
+             <input type="password" class="form-control validate white-text" ng-model="user.spendingpassword" name="spendingpassword"  autocomplete="off" ng-minlength="6" ng-maxlength="16" required>
+             <label for="amount" class="col center white-text">Spending Password</label>
+              <span style="color:red;margin-left: -88px;" ng-show="frm.spendingpassword.$dirty && frm.spendingpassword.$error.minlength">Spending Password must contain atleast 6 charecters</span>
+              <span style="color:red;margin-left: -149px;" ng-show="frm.spendingpassword.$dirty && frm.spendingpassword.$error.maxlength">Max-length of Spending Password Reached</span>
+          </div>
+     </div>
+
+<div class="row no-margin">
+        <div class="custom-input-focus-color input-field col s12">
+          <input id="confirmSpendingPassword" type="password" ng-model="user.confirmSpendingpassword"  required class="form-control validate white-text" ng-change="confirmspendingpasswordMatch(user.spendingpassword)">
+          <label for="amount" class="col center white-text">Confirm Spending Password</label>
+        <span style="color:red;margin-left: -154px;" ng-show="frm.user.confirmSpendingpassword.$error.required">Required</span>
+        <span style="color:red;margin-left: -156px;" ng-show="noData1">Confirm Spending Password do not match.</span>
+        </div>
+      </div>
+
+
+     
+      <button class="btn waves-effect waves-light light-blue-text darken-4-text white" type="submit" name="action" ng-disabled="frm.$invalid" ng-click="createNewUser(user)">Get Started
+        <i class="material-icons right">send</i>
+      </button>
+
+    </form>
+
+    <div class="row center">
+      <span class="col center white-text">Already Have Account? <a ui-sref="userlogin">Login !</a></span>
+    </div>
+  </ion-content>
+</ion-view>

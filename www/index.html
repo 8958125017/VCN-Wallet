@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+    <!--  <script src="app/ion-floating-menu.js"></script> -->
+    <link href='https://fonts.googleapis.com/css?family=RobotoDraft:400,500,700,400italic' rel='stylesheet' type='text/css'>
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    
+    <!-- ionic material css-->
+    <link href="css/Ionic-Material-master/dist/ionic.material.min.css" rel="stylesheet">
+    <link href="lib/ionic-ion-drawer-master/ionic.contrib.drawer.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/materialize.min.css">
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+   
+   
+   
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ionic-ion-drawer-master/ionic.contrib.drawer.js"></script>
+    <script src="js/Ionic-Material-master/dist/ionic.material.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <script src="app/assests/lib/ngCordova/dist/ng-cordova.min.js"></script>
+    <script src="cordova.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+     <script src="app/assests/lib/external/ionic-datepicker.bundle.min.js"></script>
+     <script src="app/assests/lib/external/zingchart-2.2.2.min.js"></script>
+     <script src="app/assests/lib/external/zingchart-angularjs-1.0.4.js"></script>
+     <script src="app/assests/lib/external/ion-digit-keyboard.min.js"></script>
+     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+     <script src="app/assests/lib/external/Chart.bundle.js"></script>
+     <script src="app/assests/lib/external/angular-chart.min.js"></script>
+     <script src="app/assests/lib/external/qrcode.min.js"></script> 
+     <script src="app/assests/lib/external/ngStorage.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.1.1/Chart.min.js"></script>
+
+    <!-- your app's js -->
+    <script src="app/app.module.js"></script>
+    <script src="app/app.routes.js"></script>  
+    <script src="app/app.directives.js"></script>     
+    <script src="app/service.js"></script>
+    <script src="app/authService.js"></script>
+    <script src="app/constants.js"></script>
+    <script src="app/public/tour/tour.js"></script>
+    <script src="app/public/signIn/loginCtrl.js"></script>
+    <script src="app/public/signUp/signup.js"></script> 
+    <script src="app/public/forgotPassword/forgotPasswordCtrl.js"></script>
+    <script src="app/public/changeSpendingPassword/changeSpendingPassword.js"></script> 
+    <script src="app/public/settings/setting.js"></script>
+    <script src="app/private/getCrypto/getCrypto.js"></script>
+    <script src="app/public/pinlock/pinlock.js"></script>
+    <script src="app/public/about/about.js"></script>  
+    <script src="app/private/btctransaction/btctransactions.js"></script>
+    <script src="app/private/bchtransaction/bchtransaction.js"></script>
+    <script src="app/private/dashboard/dashboardCtrl.js"></script>
+    <script src="app/private/btcvault/btcVaultCtrl.js"></script> 
+    <script src="app/private/askcrypto/askCryptoCtrl.js"></script>
+    <script src="app/private/bidcrypto/bidcryptoCtrl.js"></script>
+    <script src="app/private/btcvault/btcVaultCtrl.js"></script>
+    <script src="app/private/buycrypto/buyCryptoCtrl.js"></script>
+    <script src="app/private/cryptovault/cryptoVaultCtrl.js"></script>
+    <script src="app/private/requestBTC/RequestBTCCtrl.js"></script>
+    <script src="app/private/requestcrypto/requestcrypto.js"></script>
+    <script src="app/private/sellcrypto/SellCryptoCtrl.js"></script>
+    <script src="app/private/sendreceiveBTC/SendReceiveBTCCtrl.js"></script>
+    <script src="app/private/sendreceivecrypto/sendReceiveCryptoCtrl.js"></script>
+    <script src="app/private/sendreceivecrypto/sendReceiveCryptoCtrl.js"></script>    
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+    
+    </head>
+
+  <body ng-app="starter">
+    <ion-nav-view></ion-nav-view>
+  </body>
+</html>

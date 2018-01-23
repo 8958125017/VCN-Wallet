@@ -1,0 +1,30 @@
+<ion-view view-title="Request {{targetCoin}}">
+  <ion-content class="relative-position">
+     <div class="row center">
+                    
+                    <div class="col center">
+                      <img src="http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl=bitcoin:{{userBTCAddress.userBTCAddress}},amount:{{requestAmountBTC}}" alt="QR Code"> 
+                      <div class="">
+                        <span>
+                          {{userBTCAddress.userBTCAddress}} 
+                        </span>
+                      </div>
+                      
+                    </div>
+
+              </div>  
+              <div class="row padding">
+                      <div class="list">
+                          <label class="item item-input">
+                            <span class="input-label">Amount({{targetCoin}})</span>
+                            <input type="text" ng-model="requestAmountBTC" ng-change="myRequestFunc(requestAmountBTC)">
+                          </label>
+                      </div>  
+              </div>
+              <div class="center">
+                      <a class="btn-floating btn-large waves-effect center waves-light primary-color center" ng-click="shareBTCRequest('bitcoin:'+userBTCAddress.userBTCAddress+', amount: '+requestAmountBTC)"><i class="material-icons">share</i></a>
+              </div>
+
+  </ion-content>
+
+</ion-view>

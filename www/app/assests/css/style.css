@@ -1,0 +1,664 @@
+/* Empty. Add your own CSS if you like */
+
+/*Custom Colors*/
+.primary-color{
+	background: #4f52ba !important;
+}
+.primary-color-light{
+	background: #4f52ba !important;
+}
+.secondary-color{
+	background: #65c3ba !important;
+}
+.secondary-color-light{
+	background: #83d0c9 !important;
+}
+.primary-text{
+	color: #009688 !important;
+}
+.primary-text-light{
+	color: #35a79c !important;
+}
+.secondary-text{
+	color: #65c3ba !important;
+}
+.secondary-text-light{
+	color: #83d0c9 !important;
+}
+.text-light{
+	color: #fff !important;
+}
+.back-light{
+	background: #fff !important;
+}
+.bar .button.back-button, .bar button.back-button{
+	color: #fff !important;
+}
+/*end*/
+
+.bar.bar-profile {
+    background-color: #FFFFFF;
+    height: 170px;
+}
+.barcolortest {
+  background-color: rgb(42, 201, 170); 
+  
+}
+.bar .title.title-left {
+    text-align: center !important;
+}
+/* Utility */
+.margin-top{
+	margin-top: 10px;
+}
+.margin-bottom{
+	margin-bottom: 10px;
+}
+.margin-right{
+	margin-right: 10px;
+}
+.margin-left{
+	margin-left: 10px;
+}
+
+/*end*/
+/* Base CSS Alter */
+.bar{
+	border: none !important;
+}
+.bar .profile {
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 0;
+    overflow: hidden;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    padding-top: 15px;
+}
+
+.profile .name {
+    color: #444;
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+}
+
+.profile-picture {
+    border-radius: 50%;
+}
+
+.menu .has-header
+{
+    top: 169px;
+}
+.team {
+    padding: 180px 0 180px 0;
+}
+
+.team img {
+    width: 100%;
+    height: 100%;
+}
+
+ul.img-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul.img-list li {
+    display: inline-block;
+    position: relative;
+    height: 350px;
+}
+
+span.text-content {
+    background: rgba(39,39,39,0.75);
+    color: white;
+    cursor: pointer;
+    display: table;
+    left: 0;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+}
+
+span.text-content span {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+ul.img-list li:hover span.text-content {
+    opacity: 1;
+    -webkit-transition: opacity 500ms;
+    -moz-transition: opacity 500ms;
+    -o-transition: opacity 500ms;
+    transition: opacity 500ms;
+}
+
+.team span p {
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #a5a5a5;
+}
+
+.social-icon {
+    font-size: 12px;
+    color: #444;
+    margin: 0 auto;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.social-icon-holder {
+    border: 2px solid #444;
+    border-radius: 50%;
+    width: 20px;
+    height: 7px;
+    display: table;
+}
+.e-list-item {
+  height: 60px;
+  width: 100%;
+}
+
+ /*Circular Icon*/
+ .icon-circle, .icon-circle-large, .icon-circle-small{
+  position: relative;
+  display: inline-block;
+  margin: -1px;
+  /*padding: 16px;*/
+  
+  
+  width: 45px; /* 60*/
+    height: 45px; 
+  font-size:40px; 
+  
+   -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+    border-radius: 50%;
+  
+    
+  
+  border: 1px solid #ebebeb;
+ 
+  background: rgb(0, 161, 225); /*#ececec;ebebeb*/
+  color: #fff;
+  
+  text-align:center;
+  /*vertical-align: middle;*/
+}
+
+.icon-circle-large {
+  width: 100px;
+  height: 100px;
+  font-size: 64px; /* 64, originally 60 */
+  padding: 16px;
+  
+  
+}
+.icon-circle-small {
+  width: 24px;
+  height: 24px;
+  font-size: 14px;
+}
+.icon-circle-small-mobile {
+  height: 24px;
+  font-size: 14px;
+}
+
+
+/*.icon-circle i, .icon-circle-small i, .icon-circle-large i { vertical-align: middle; }*/
+
+.icon-circle-outline {
+   border: 1px solid #33cd5f !important;
+   background: transparent;
+  color: rgb(0, 161, 225);
+   /*color: #8a6de9;*/
+}
+
+.icon-circle-outline i {  }
+/*icon-circle-bg and icon-circle and circle-bg*/
+
+
+
+
+/*http://davidwalsh.name/css-circles*/
+
+
+
+.item-icon-circle {
+   -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px; 
+  /* width and height can be anything, as long as they're equal */
+  
+  text-align:center;
+  color:white;
+  /* font size here wont work */
+
+}
+
+.item-icon-circle i {
+  /*text-align:center;
+  color:white;*/
+   /*margin: 0px auto;
+  padding: 0px;
+  display:block;*/
+  font-size:60px;
+}
+
+
+
+    
+
+    
+
+
+
+/*
+    letter-spacing: 1px;
+  overflow: hidden;
+  
+  
+    perspective-origin: 40px 40px;
+    transform-origin: 40px 40px;
+    background: rgb(0, 161, 225) none repeat scroll 0% 0% / auto padding-box border-box;
+*/
+
+.bg-circle-alt {
+  -moz-border-radius:50%;
+  -webkit-border-radius:50%;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px; 
+}
+
+
+/*setting pin change ......*/
+ion-pane#login-2 {
+            background: #333;
+            color: #fff;
+        }
+        
+        ion-pane#login-2 ion-content {
+            padding-top: 70px;
+            text-align: center;
+        }
+        
+        ion-pane#login-2 p#login-header {
+            font-size: 50px;
+            font-weight: 100;
+        }
+        
+        ion-pane#login-2 p#pin-title {
+            margin-top: 30px;
+        }
+        
+        ion-pane#login-2 #pin {
+            position: relative;
+            width: 50%;
+            display: inline-flex;
+            margin: 0 auto;
+            line-height: 40px;
+        }
+        
+        ion-pane#login-2 #pin > i {
+            position: absolute;
+            top: 15px;
+            font-size: 20px;
+            margin-left: 15px;
+            color: rgba(255, 255, 255, 0.75);
+        }
+        
+        ion-pane#login-2 #pin > i {
+            position: absolute;
+            top: 0;
+            font-size: 20px;
+            margin-left: 15px;
+            color: rgba(255, 255, 255, 0.75);
+        }
+        
+        ion-pane#login-2 #pin > i.activated {
+            color: #fff;
+        }
+        
+        ion-pane#login-2 #pin div {
+            border-bottom: 1px solid #fff;
+            height: 40px;
+            flex: 1;
+            margin: 0 5px;
+        }
+        
+        ion-pane#login-2 #pin div i.ion-record {
+            margin: 0;
+        }
+/*draw Line*/
+.colline{
+ border-bottom: 1px solid #ccc;
+}
+
+
+
+
+/*Validation */ 
+
+form i.icon.error {
+  color: #ef4e3a; 
+  
+}
+
+form input + i.icon.error {
+  display: none;
+  margin-left: 8px;
+
+}
+
+form.ng-submitted input.ng-invalid + i.icon.error {
+  display: block; 
+}
+
+
+/*
+form .has-error {
+  border-left: 3px solid #cc2511; 
+  border-right: 3px solid #cc2511; 
+}
+
+form .has-success {
+  border-left: 3px solid #3d8b3d; 
+  border-right: 3px solid #3d8b3d; 
+}*/
+
+
+
+.validated {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%; 
+}
+
+.validated .input-label {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 30%;
+  -moz-box-flex: 0;
+  -moz-flex: 0 0 30%;
+  -ms-flex: 0 0 30%;
+  flex: 0 0 30%;
+  max-width: 30%; 
+}
+
+.validated input {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 60%;
+  -moz-box-flex: 0;
+  -moz-flex: 0 0 60%;
+  -ms-flex: 0 0 60%;
+  flex: 0 0 60%;
+  max-width: 80%; 
+}
+
+.validated error {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 10%;
+  -moz-box-flex: 0;
+  -moz-flex: 0 0 10%;
+  -ms-flex: 0 0 10%;
+  flex: 0 0 10%;
+  max-width: 10%; 
+
+}
+
+
+
+
+
+
+/* Radio Button Styles here */
+.item-icon-left .item-content {
+  padding-left:3em !important;  
+  padding-top:5px !important;
+  padding-bottom:5px !important;
+  background-color: white !important;  
+}
+
+.item-icon-left i {
+  left:0;
+  padding-top:2px !important;
+  padding-bottom:5px !important;
+  right: auto;
+  color: #D4201F !important;
+  font-size: 20px !important;
+}
+
+.item-radio input ~ .radio-icon {
+    visibility: visible !important;
+}
+
+.item-radio > .radio-icon:before {
+    content: "\f3a6" !important; /*deselected - Ionic class = ion-android-radio-button-off */
+}
+
+.item-radio > input[type=radio]:checked ~ .radio-icon:before {
+    content: "\f3a7" !important; /*selected Ionic class = ion-android-radio-button-on */
+}
+
+
+/*  Line divider in Mobile Recharge*/
+#leftline {
+  position: relative;
+  float: left;
+  width: 49%;
+  margin-bottom: 10%;
+  margin-top: 2%;
+  padding: 0;
+  border-right: 1px solid black;
+  height:180px;
+}
+
+#rightline {
+  position: relative;
+  float: right;
+  margin-top: 2%;
+  width: 49%;
+  margin-bottom: 10%;
+  padding: 0;
+  height:180px;
+}
+
+/*Shadow of line*/
+
+      .bottomshadow {
+
+        box-shadow: 0 5px 5px -5px #333;
+      }
+
+      .topshadow {
+        box-shadow: 0 -5px 5px -5px #333;
+      }
+
+      /*setting Page CSS*/
+.cust-btn{
+    width: 42% !important;
+    float: right;
+    position: relative;
+}
+.button-box-custom{
+  padding-right: 0 !important;
+}
+/*homepage*/
+.button-row-home{
+	margin-top: -20px !important;
+}
+.balance-of-user{
+	font-size: 25px;
+	margin-bottom: 20px !important;
+}
+.home-buttons{
+    width: 50%;
+	line-height: 1.5;
+}
+
+/* custom alteration */
+
+/*homepage*/
+.bar-footer{
+  height: 50px !important;
+}
+.home-footer{
+  height: 100px !important;
+}
+.paddingForbalance, .paddingForinput{
+  padding: 20px 0;
+}
+.icon-border{
+    padding: 10px 15px;
+    border: 1px solid;
+    border-radius: 100%;
+    margin-bottom: 5px;
+}
+.font-20{
+  font-size: 20px;
+}
+.font-10{
+  font-size: 10px;
+}
+
+.social-actionsheet .action-sheet .button
+{
+    padding: 0 10px;
+    text-align: left !important;
+}
+
+.social-actionsheet .action-sheet .button .text-action
+{
+    margin-left: 30px;
+}
+
+.social-actionsheet .action-sheet .button .text-width
+{
+    margin-left: 50px;
+}
+
+/*Rate Page*/
+/*.rateTabs .tabs-top > .tabs, .tabs.tabs-top {
+    top: 125px !important;
+  }*/
+
+  .tour {
+  background-color: #ffefd6;
+  text-align: center;
+  position: absolute;
+  z-index: 100;
+}
+.tour .slider {
+  height: 100%;
+  padding-top: 80px;
+}
+.tour img {
+  max-height: 70%;
+}
+.comments .button-block {
+  margin: 0;
+}
+.room-service ion-header-bar {
+  margin-top: 44px;
+}
+.room-service ion-content {
+  top: 88px;
+}
+.item.button-block {
+  margin-top: 0;
+  border-radius: 0;
+}
+
+
+
+
+h2{
+margin-top:20px;
+margin-bottom:20px;
+}
+.login h2{
+background-color: #FEFFED;
+text-align:center;
+border-radius: 10px 10px 0 0;
+margin: -10px -40px;
+padding: 15px;
+}
+.login hr{
+border:0;
+border-bottom:1px solid #ccc;
+margin: 10px -40px;
+margin-bottom: 10px;
+}
+.login{
+width:100%;
+border-radius: 10px;
+font-family:raleway;
+border: 2px solid #ccc;
+padding: 10px 40px 10px;
+word-wrap: break-word;
+}
+.login p{
+margin-top:8px;
+font-size:16px;
+}
+.login hr {
+margin-bottom: 30px;
+}
+input[type=text]{
+width:99.5%;
+padding: 10px;
+border: 1px solid #ccc;
+padding-left: 5px;
+font-size: 16px;
+font-family:raleway;
+}
+label#label{
+margin-bottom:10px;
+font-size:18px;
+font-weight:bold;
+}
+textarea.ng-invalid{
+border:1px solid red;
+border-left: 5px solid red;
+}
+textarea.ng-valid.ng-dirty{
+border:1px solid green;
+border-left: 5px solid green;
+}
+select.ng-invalid{
+border:1px solid red;
+border-left: 5px solid red;
+}
+select.ng-valid.ng-dirty{
+border:1px solid green;
+border-left: 5px solid green;
+}
+input.ng-invalid{
+border:1px solid red;
+border-left: 5px solid red;
+}
+input.ng-valid.ng-dirty{
+border:1px solid green;
+border-left: 5px solid green;
+}
+.error-msg{
+margin-top:15px;
+color:red !important;
+}
+.headname{
+font-size:15px;
+}

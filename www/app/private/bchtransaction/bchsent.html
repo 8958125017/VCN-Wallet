@@ -1,0 +1,28 @@
+ <ion-view view-title="Sent {{baseCoin}}">
+  <ion-pane>
+
+    <ion-content class="white">
+      <div ng-repeat="all in data | orderBy : '-time'">
+        <div ng-show="all.category == 'send'" class="card white-text blue lighten-1 margin padding">
+          <div class="row no-margin">
+            <span class="font-lighter">To:&nbsp;{{all.address}}</span><br>
+          </div>
+          <div class="row no-margin">
+            <div class="col-50 ">
+              <small class="valign-wrapper"><em>{{all.time* 1000 | date:'dd-MM-yy HH:mm'}}</em></small>
+              <a class="white-text" ng-click="transDetails(all.txid)">see details</a>
+            </div>
+            <div class="col-50 no-margin">
+              <div class="pull-right">
+                <span class="crypto-icon">{{targetCoinShortName}}&nbsp;</span><span class="font-25">{{all.amount}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        
+      
+    </ion-content>
+  </ion-pane>
+</ion-view>
+
