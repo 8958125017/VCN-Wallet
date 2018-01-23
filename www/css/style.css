@@ -388,7 +388,7 @@ input:not([type]):focus:not([readonly])+label, input[type=text]:not(.browser-def
 }
 .padding-balance{
 	padding: 25px 16px!important;
-	height: 101%;
+	height: 95%;
 	/*padding: 45px 0px!important;
 	height: 64%;*/
 }

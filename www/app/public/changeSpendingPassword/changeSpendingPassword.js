@@ -5,6 +5,28 @@
      "newSpendingPassword": "",
      "confirmSpendingPassword": ""
    }
+var strongRegularExp = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+var mediumRegularExp = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{5,})");
+$scope.checkpwdStrength = {
+        "width": "150px",
+        "height": "17px",
+        "float": "left"
+      };
+
+$scope.validationInputPwdText = function(value) {
+        if (strongRegularExp.test(value)) {
+          $scope.checkpwdStrength["background-color"] = "green";
+          $scope.passStrength="strong";
+        } else if (mediumRegularExp.test(value)) {
+          $scope.checkpwdStrength["background-color"] = "orange";
+          $scope.passStrength="medium";
+        } else {
+          $scope.checkpwdStrength["background-color"] = "red";
+           $scope.passStrength="week";
+        }
+      };
+
+
    // change spending password
    $scope.newSpendingPassword = function(newSpendingPasswordvalue) {
      console.log(" password = =" + angular.toJson($scope.newSpendingPasswordvalue))
@@ -56,5 +78,13 @@
      $ionicLoading.hide();
    };
 
+
+$scope.passwordMatch=function(password){
+if($scope.newSpendingPasswordvalue.confirmSpendingPassword!=password){
+  $scope.noData = true;
+}else{
+   $scope.noData = false;
+}
+}
 
  });

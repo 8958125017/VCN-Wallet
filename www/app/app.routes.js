@@ -281,6 +281,18 @@
       })
 
 
+          .state('app.depositeBTC', {
+        url: '/depositeBTC',
+        views: {
+          'menuContent': {
+            templateUrl: 'app/private/depositeBTC/depositeBTC.html',
+            controller: 'DepositeBTCCtrl'
+          }
+        },
+        authenticate: true
+      })
+
+
       .state('app.bchsent', {
         url: '/bchsent',
         views: {

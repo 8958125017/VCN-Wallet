@@ -9,10 +9,6 @@ ionicMaterialInk.displayEffect();
     });
   };
 
-  $scope.init = function() {
-    $scope.values="";
-  }
-
   $scope.hide = function() {
     $ionicLoading.hide();
   };
@@ -153,8 +149,6 @@ ionicMaterialInk.displayEffect();
       console.log("An error happened -> " + error);
     });
   }
-   $scope.init();
-   
   $scope.showConfirm = function() {
       var confirmPopup = $ionicPopup.confirm({
         title: 'My BTC Addresss',

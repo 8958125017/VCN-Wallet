@@ -8,7 +8,7 @@ var mybccApp = angular.module('starter', ['ionic', 'ngCordova', 'ionic-material'
     'ion-digit-keyboard', 'ionic.contrib.drawer', 'mypayservice', 'ngStorage'
   ])
 
-  .run(function($ionicPlatform, $ionicPopup,$location) {
+  .run(function($ionicPlatform,$state, $ionicPopup,$location) {
     $ionicPlatform.ready(function() {
 
       if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -17,7 +17,7 @@ var mybccApp = angular.module('starter', ['ionic', 'ngCordova', 'ionic-material'
 
       }
       if (window.StatusBar) {        
-            StatusBar.backgroundColorByHexString("#00F2E2");        
+            StatusBar.backgroundColorByHexString("#4f52ba");        
       }
        var firstVisit = localStorage.getItem('firstVisit');
           if (!firstVisit) {
@@ -30,4 +30,21 @@ var mybccApp = angular.module('starter', ['ionic', 'ngCordova', 'ionic-material'
         }
       }
     });
+
+    $ionicPlatform.registerBackButtonAction(function() {
+      if ($state.current.name == "app.dashboard") {
+        var confirmPopup = $ionicPopup.confirm({
+          template: 'Are you sure you want to exit?'
+        });
+        confirmPopup.then(function(res) {
+          if (res) {
+            navigator.app.exitApp();
+          }
+        });
+      } else {
+        navigator.app.backHistory();
+      }
+    }, 1000);
   })
+
+   

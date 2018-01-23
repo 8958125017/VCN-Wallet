@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="VCNWallet" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.ionicframework.VCNWallet2018" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>VCN Wallet</name>
     <description>VCN Wallet is a crypto currency wallet</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Blockon Team</author>

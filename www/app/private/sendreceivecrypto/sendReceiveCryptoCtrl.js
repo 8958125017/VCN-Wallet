@@ -1,12 +1,7 @@
 mybccApp.controller('SendReceiveCryptoCtrl', function($scope, $state, MyPayService, $ionicLoading, ionicMaterialInk,ConnectivityMonitor, $cordovaBarcodeScanner, $ionicPlatform, $localStorage, $ionicPopup, $ionicActionSheet, $timeout, $cordovaClipboard, getCurrentUserData) {
   ionicMaterialInk.displayEffect();
-
-  $scope.init = function() {
-    $scope.values="";
-  }
-  
-
   $scope.show = function()
+
   {
     $ionicLoading.show({
       template: '<p>Loading...</p><ion-spinner></ion-spinner>'
@@ -187,7 +182,4 @@ mybccApp.controller('SendReceiveCryptoCtrl', function($scope, $state, MyPayServi
       console.log("An error happened -> " + error);
     });
   }
-  
-  $scope.init();
-
 });

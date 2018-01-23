@@ -1,28 +1,28 @@
 <ion-view view-title="Get VCN">
-    <ion-content class="relative-position">
-              <div class="row center padding-top">
+    <ion-content  style="overflow-y: auto !important;">
+              <div class="row center responsive-sm">
                     <div class="col center">
-                      <img src="http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl=bitcoincash:{{cmpBtcAddress}}" alt="QR Code"> 
-                      <div class="">
+                      <img src="http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl={{cmpBtcAddress}}" alt="QR Code" style="margin-top: -28px"> 
+                      <div class="row no-margin responsive-sm">
                         <span>
                           {{cmpBtcAddress}} 
                         </span>
-                      </div>                      
+                      </div>
+                 <div class="row no-margin responsive-sm">
+                    <div class="col s12 center">
+                       <strong class="green-white">1 VCN ={{usdRate}} BTC</strong>
+                       </div>
+                    </div>
                     </div>
               </div>  
-              <div class="row center padding-top">
-                    <div class="col center">
-                       <strong class="green-white">1 VCN ={{usdRate}} BTC</strong<strong>
-                       </div>
-              </div>  
-
-  <form class="col s12 center" name="frm" novalidate>
-    
+                
+ 
+  <form class="col s12 center" name="frm" novalidate style="margin-top: -50px">    
      <div class="row no-margin form-group">
        <div class="custom-input-focus-color input-field col s12">   
       <input type="text" class="form-control validate" ng-model="VCNtxDetail.txId" name="txId" autocomplete="off" required>
        <label for="txId" class="col center ">BTC Address</label>
-      <span style="color:red ;margin-left: -200px;" ng-show="frm.txId.$dirty && frm.txId.$error.required">BTC address is Required/span>
+      <span style="color:red ;" ng-show="frm.txId.$dirty && frm.txId.$error.required">BTC address is Required</span>
       </div>
      </div>
 
@@ -31,24 +31,23 @@
        <div class="custom-input-focus-color input-field col s12">   
      <input type="number" class="form-control validate" ng-model="VCNtxDetail.amount" step="0.00001" name="amount" autocomplete="off" required ng-change="myFunc(VCNtxDetail.amount)">
        <label for="amount" class="col center ">Amount({{targetCoin}})</label>
-      <span style="color:red ;margin-left: -240px;" ng-show="frm.amount.$dirty && frm.amount.$error.required">Amout Should Not be Empty</span>
+        <span style="color:red;" ng-show="frm.amount.$dirty &&frm.amount.$error.required">Amout Should Not be Empty</span>
     </div>
      </div>
 
-      <div class="row no-margin ">
+      <div class="row no-margin">
        <div class="custom-input-focus-color input-field col s12">   
-     <input type="number" class="form-control validate" ng-model="btcindollor.btcDoller" step="0.00001" name="amount" autocomplete="on" disabled>
+       <input type="number" class="form-control validate" ng-model="btcindollor.btcDoller" step="0.00001" name="amount1" autocomplete="off" disabled>
        <label for="amount" class="col center " id='focusLabel'>Total VCN</label>
      
     </div>
-     </div>
-   
+  </div>
      
       <button class="btn waves-effect waves-light light-blue-text darken-4-text white" type="submit" name="action" ng-disabled="frm.$invalid" ng-click="shareRequestForVCN(VCNtxDetail)" >Send
         <i class="material-icons right">send</i>
       </button>
 
     </form>
-
+ 
           </ion-content>
 </ion-view>

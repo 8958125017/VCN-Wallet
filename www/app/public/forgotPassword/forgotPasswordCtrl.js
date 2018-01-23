@@ -7,7 +7,28 @@ mybccApp.controller('ForgotPasswordCtrl', function($scope, $rootScope, $state,io
     });
   };
 
-  
+  var strongRegularExp = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+var mediumRegularExp = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{5,})");
+
+  $scope.checkpwdStrength = {
+        "width": "150px",
+        "height": "17px",
+        "float": "left"
+      };
+
+$scope.validationInputPwdText = function(value) {
+  console.log("hello jgsdjfsd fjidshf ")
+        if (strongRegularExp.test(value)) {
+          $scope.checkpwdStrength["background-color"] = "green";
+          $scope.passStrength="strong";
+        } else if (mediumRegularExp.test(value)) {
+          $scope.checkpwdStrength["background-color"] = "orange";
+          $scope.passStrength="medium";
+        } else {
+          $scope.checkpwdStrength["background-color"] = "red";
+           $scope.passStrength="week";
+        }
+      };
 
   $scope.hide = function() {
     $ionicLoading.hide();
@@ -150,6 +171,15 @@ if($scope.user.confirmPassword!=password){
 }
 }
   }
+
+
+  $scope.passwordMatch=function(password){
+if($scope.user.confirmPassword!=password){
+  $scope.noData = true;
+}else{
+   $scope.noData = false;
+}
+}
 
   $scope.passwordMatch=function(password){
 if($scope.newPasswordvalue.confirmNewPassword!=password){

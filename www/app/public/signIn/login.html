@@ -16,8 +16,8 @@
      <input type="email" class="form-control validate white-text" ng-model="user.email" name="email" autocomplete="off" required>
        <label for="address" class="col center white-text">Email</label>
        <span ng-show="frm.email.$dirty && frm.email.$invalid">
-      <span style="color:red;margin-left: -260px;" ng-show="frm.email.$dirty && frm.email.$error.email">Email Address is not valid</span>
-       <span style="color:red;margin-left: -308px;" ng-show="frm.email.$error.required">Email is Required</span>
+      <span style="color:red;" ng-show="frm.email.$dirty && frm.email.$error.email">Email Address is not valid</span>
+       <span style="color:red;" ng-show="frm.email.$error.required">Email is Required</span>
      </span>
     </div>
      </div>
@@ -28,7 +28,7 @@
         <div class="custom-input-focus-color input-field col s12">
              <input type="password" class="form-control validate white-text" ng-model="user.password" name="password"  autocomplete="off" required>
              <label for="amount" class="col center white-text">Password</label>
-              <span style="color:red;margin-left: -274px;" ng-show="frm.password.$dirty && frm.password.$error.required">Password is Required</span>
+              <span style="color:red;" ng-show="frm.password.$dirty && frm.password.$error.required">Password is Required</span>
           </div>
      </div>
 
