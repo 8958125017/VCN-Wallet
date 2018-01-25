@@ -6,7 +6,7 @@ mybccApp.controller('GetVCNCtrl', function($scope,$rootScope, $state,$ionicLoadi
       });
     } else {
       $scope.currentUserBalance = response.currentPrice.ask;
-      $scope.usdRate=(1/ $scope.currentUserBalance).toFixed(5);
+      $scope.usdRate=(1/ $scope.currentUserBalance).toFixed(8);
       console.log("$scope.currentUserBalance = = ="+$scope.currentUserBalance)
     }
   });

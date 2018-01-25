@@ -39,11 +39,7 @@ mybccApp.controller('RequestBTCCtrl', function($rootScope, $scope, $localStorage
             alert("Error: Cannot Share")
           });
         }
-        //   if (index === 3) {
-        //   window.plugins.socialsharing.shareViaEmail(address, subject, toArr, ccArr, bccArr, file, null, function(errormsg) {
-        //     alert("Error: Cannot Share")
-        //   });
-        // }
+        
       }
     });
 

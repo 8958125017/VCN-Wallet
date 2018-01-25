@@ -40,11 +40,10 @@ mybccApp.controller('DashboardCtrl', function($rootScope, $scope, $ionicPopup, $
         } else {
           $scope.currentUserBalance = response.currentPrice;
          $scope.btcRate = response.currentPrice.ask;
-       $scope.usdRate=(1/ $scope.btcRate).toFixed(5);
+         $scope.usdRate=(1/ $scope.btcRate).toFixed(8);
         }
       });
       $scope.$broadcast('scroll.refreshComplete');
-
     }, 5000);
 
   };
@@ -57,7 +56,7 @@ mybccApp.controller('DashboardCtrl', function($rootScope, $scope, $ionicPopup, $
     } else {
       $scope.currentUserBalance = response.currentPrice;
        $scope.btcRate = response.currentPrice.ask;
-       $scope.usdRate=(1/ $scope.btcRate).toFixed(5);
+       $scope.usdRate=(1/ $scope.btcRate).toFixed(8);
     }
   });
 

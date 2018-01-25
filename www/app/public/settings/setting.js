@@ -92,55 +92,56 @@ mybccApp.controller('SettingCtrl', function($scope, $state, $ionicLoading, Conne
   };
 
   $scope.changeCurrentPassword = function() {
-    if (ConnectivityMonitor.isOffline()) {
-      Materialize.toast("internet is disconnected on your device !!",4000);   
-    } else {
-      var alertPopup = $ionicPopup.show({
-        template: '<input type="password" placeholder="current password" ng-model="passwordValue.currentPassword" autofocus> <br><input type="password" placeholder="new password" ng-model="passwordValue.newPassword" autofocus><br><input type="password" placeholder="confirm new password" ng-model="passwordValue.confirmNewPassword" autofocus>',
-        title: 'Change Password ',
-        scope: $scope,
-        buttons: [{
-          text: 'Cancel',
-          onTap: function(e) {
-            $scope.passwordValue = {};
-            return true;
-          }
-        }, {
-          text: '<b>Submit</b>',
-          type: 'button-positive',
-          onTap: function(e) {
-            if (ConnectivityMonitor.isOffline()) {
-              Materialize.toast("internet is disconnected on your device !!",4000);   
-            } else {
-              $scope.show($ionicLoading);
-              MyPayService.changepasswords($scope.passwordValue).then(function(response) {
-                if (response.data.statusCode == 200) {
-                  $scope.hide($ionicLoading);
-                  var alertPopup = $ionicPopup.alert({
-                    title: 'password change successfully',
-                  });
-                  $scope.passwordValue = {};
-                  $state.go('app.dashboard');
-                } else {
-                  $scope.hide($ionicLoading);
-                  var alertPopup = $ionicPopup.alert({
-                    title: response.data.message,
-                  });
-                  $scope.passwordValue = {};
-                }
-              });
-            }
+    $state.go('app.changeCurrentPassword');
+    // if (ConnectivityMonitor.isOffline()) {
+    //   Materialize.toast("internet is disconnected on your device !!",4000);   
+    // } else {
+    //   var alertPopup = $ionicPopup.show({
+    //     template: '<input type="password" placeholder="current password" ng-model="passwordValue.currentPassword" autofocus> <br><input type="password" placeholder="new password" ng-model="passwordValue.newPassword" autofocus><br><input type="password" placeholder="confirm new password" ng-model="passwordValue.confirmNewPassword" autofocus>',
+    //     title: 'Change Password ',
+    //     scope: $scope,
+    //     buttons: [{
+    //       text: 'Cancel',
+    //       onTap: function(e) {
+    //         $scope.passwordValue = {};
+    //         return true;
+    //       }
+    //     }, {
+    //       text: '<b>Submit</b>',
+    //       type: 'button-positive',
+    //       onTap: function(e) {
+    //         if (ConnectivityMonitor.isOffline()) {
+    //           Materialize.toast("internet is disconnected on your device !!",4000);   
+    //         } else {
+    //           $scope.show($ionicLoading);
+    //           MyPayService.changepasswords($scope.passwordValue).then(function(response) {
+    //             if (response.data.statusCode == 200) {
+    //               $scope.hide($ionicLoading);
+    //               var alertPopup = $ionicPopup.alert({
+    //                 title: 'password change successfully',
+    //               });
+    //               $scope.passwordValue = {};
+    //               $state.go('app.dashboard');
+    //             } else {
+    //               $scope.hide($ionicLoading);
+    //               var alertPopup = $ionicPopup.alert({
+    //                 title: response.data.message,
+    //               });
+    //               $scope.passwordValue = {};
+    //             }
+    //           });
+    //         }
 
-          }
-        }, ]
-      }).then(function(res) {
-        console.log('Tapped!', res);
-      }, function(err) {
-        console.log('Err:', err);
-      }, function(msg) {
-        console.log('message:', msg);
-      });
-    }
+    //       }
+    //     }, ]
+    //   }).then(function(res) {
+    //     console.log('Tapped!', res);
+    //   }, function(err) {
+    //     console.log('Err:', err);
+    //   }, function(msg) {
+    //     console.log('message:', msg);
+    //   });
+    // }
   }
 
 

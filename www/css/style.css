@@ -1,13 +1,13 @@
 /* Empty. Add your own CSS if you like */
 
 .primary-color{
-	background:   #4f52ba !important;
+	background:   #263147 !important;
 }
 .primary-color-light{
-	background: #4f52ba !important;
+	background: #263147 !important;
 }
 .primarytext-color{
-	color: #4f52ba !important;
+	color: #263147 !important;
 }
   drawer h2 {
     color: #fff;
@@ -474,14 +474,14 @@ input:not([type]):focus:not([readonly])+label, input[type=text]:not(.browser-def
 }
 
 .green-white {
-	color: #4f52ba !important;
+	color: #263147 !important;
 }
 .white-green {
-	color: #4f52ba !important;
+	color: #263147 !important;
 }
 
 .button-bkbround{
-	background-color: #4f52ba !important;
+	background-color: #263147 !important;
 	box-shadow : none;
 	border: 1px solid white !important;
 	outline: 0;
@@ -492,7 +492,7 @@ input:not([type]):focus:not([readonly])+label, input[type=text]:not(.browser-def
 	height: 20px;
 	width: 90%;
 	box-shadow : none;
-	border: 1px solid #4f52ba;
+	border: 1px solid #263147;
 }
 .balance-up-arrow{
 	text-align: right;

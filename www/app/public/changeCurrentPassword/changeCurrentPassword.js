@@ -1,10 +1,13 @@
- mybccApp.controller('ChangeSpendingPassword', function($scope, $state, ionicMaterialInk,$ionicLoading, ConnectivityMonitor, $rootScope, $ionicPopup, $localStorage, MyPayService, getCurrentUserData) {
+ mybccApp.controller('ChangeCurrentPasswordCtrl', function($scope, $state, ionicMaterialInk,$ionicLoading, ConnectivityMonitor, $rootScope, $ionicPopup, $localStorage, MyPayService, getCurrentUserData) {
   ionicMaterialInk.displayEffect();
-   $scope.newSpendingPasswordvalue = {
-     "userMailId": getCurrentUserData.email,
-     "newSpendingPassword": "",
-     "confirmSpendingPassword": ""
-   }
+
+
+     $scope.passwordValue = {
+    "userMailId": getCurrentUserData.email,
+    "currentPassword": "",
+    "newPassword": "",
+    "confirmNewPassword": ""
+  };
 var strongRegularExp = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
 var mediumRegularExp = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{5,})");
 $scope.checkpwdStrength = {
@@ -28,30 +31,21 @@ $scope.validationInputPwdText = function(value) {
 
 
    // change spending password
-   $scope.newSpendingPassword = function(newSpendingPasswordvalue) {
-     console.log(" password = =" + angular.toJson($scope.newSpendingPasswordvalue))
-     if ($scope.newSpendingPasswordvalue.newSpendingPassword == "") {
-       var alertPopup = $ionicPopup.alert({
-         title: "please enter new password",
-       });
-     } else if ($scope.newSpendingPasswordvalue.confirmSpendingPassword == "") {
-       var alertPopup = $ionicPopup.alert({
-         title: "please enter confirm new password ",
-       });
-     } else if (ConnectivityMonitor.isOffline()) {
+   $scope.newCurrentPassword = function(passwordValue) {
+     console.log(" password = =" + angular.toJson($scope.passwordValue))
+ if (ConnectivityMonitor.isOffline()) {
        Materialize.toast("internet is disconnected on your device !!",4000);   
      } else {
        $scope.show($ionicLoading);
-       console.log("$scope.newSpendingPasswordvalue = = "+angular.toJson($scope.newSpendingPasswordvalue));
-       MyPayService.setNewSpendingPassord($scope.newSpendingPasswordvalue).then(function(response) {
+       MyPayService.changepasswords($scope.passwordValue).then(function(response) {
          if (response.data.statusCode == 200) {
            $scope.hide($ionicLoading);
            var alertPopup = $ionicPopup.alert({
-             title: "Spending Password update successfully",
+             title: "Current Password Change successfully",
            });
-           $scope.newSpendingPasswordvalue = {
-             "newSpendingPassword": "",
-             "confirmSpendingPassword": ""
+           $scope.passwordValue = {
+             "newPassword": "",
+             "confirmNewPassword": ""
            };
            $state.go('userlogin');
          } else {
@@ -59,9 +53,9 @@ $scope.validationInputPwdText = function(value) {
            var alertPopup = $ionicPopup.alert({
              title: response.data.message,
            });
-           $scope.newSpendingPasswordvalue = {
-             "newSpendingPassword": "",
-             "confirmSpendingPassword": ""
+           $scope.passwordValue = {
+             "newPassword": "",
+             "confirmNewPassword": ""
            };
          }
        });
@@ -81,7 +75,9 @@ $scope.validationInputPwdText = function(value) {
 
 
 $scope.passwordMatch=function(password){
-if($scope.newSpendingPasswordvalue.confirmSpendingPassword!=password){
+  console.log("password == = "+password);
+   console.log("password == = "+$scope.passwordValue.confirmNewPassword);
+if($scope.passwordValue.confirmNewPassword!=password){
   $scope.noData = true;
 }else{
    $scope.noData = false;

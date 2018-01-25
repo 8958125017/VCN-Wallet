@@ -17,6 +17,7 @@ ionicMaterialInk.displayEffect();
     } else {
       $scope.show($ionicLoading);
       MyPayService.createNewUser($scope.user).then(function(response) {
+       // console.log("response = = "+angular.toJson(response));
         if (response.data.statusCode == 200) {
           $scope.hide($ionicLoading);
           var alertPopup = $ionicPopup.alert({
@@ -101,4 +102,15 @@ if($scope.user.confirmSpendingpassword!=spengingPassword){
   $scope.hide = function() {
     $ionicLoading.hide();
   };
+
+  $scope.login=function(){
+    $scope.user = {
+    "email": "",
+    "password": "",
+    "confirmPassword": "",
+    "spendingpassword": "",
+    "confirmSpendingpassword": "",
+  }
+    $state.go('userlogin');
+  }
 });

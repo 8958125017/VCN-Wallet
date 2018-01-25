@@ -230,6 +230,23 @@
         authenticate: true
       })
 
+       .state('app.changeCurrentPassword', {
+        url: '/changeCurrentPassword',
+        views: {
+          'menuContent': {
+            templateUrl: 'app/public/changeCurrentPassword/changeCurrentPassword.html',
+            controller: 'ChangeCurrentPasswordCtrl',
+            resolve: {
+              getCurrentUserData: function(MyPayService) {
+                return MyPayService.getCurrentUserData();
+              }
+            }
+          }
+        },
+        authenticate: true
+      })
+
+
       .state('app.changeSpendingPassword', {
         url: '/changeSpendingPassword',
         views: {

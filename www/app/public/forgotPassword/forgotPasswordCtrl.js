@@ -8,7 +8,7 @@ mybccApp.controller('ForgotPasswordCtrl', function($scope, $rootScope, $state,io
   };
 
   var strongRegularExp = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
-var mediumRegularExp = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{5,})");
+  var mediumRegularExp = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{5,})");
 
   $scope.checkpwdStrength = {
         "width": "150px",
@@ -189,5 +189,17 @@ if($scope.newPasswordvalue.confirmNewPassword!=password){
 }
 }
 
- //$scope.init();
+ $scope.login=function(){
+  $scope.user = {
+    "userMailId": ""
+  }
+  $state.go('userlogin');
+ }
+
+ $scope.signUp=function(){
+  $scope.user = {
+    "userMailId": ""
+  }
+  $state.go('signup');
+ }
 });

@@ -52,4 +52,20 @@ ionicMaterialInk.displayEffect();
     $state.go('userregistration');
   }
 
+  $scope.signUp = function() {
+     $scope.user = {
+            "email": "",
+            "password": ""
+          }
+    $state.go('signup');
+  }
+
+ $scope.forgotPassword = function() {
+   $scope.user = {
+            "email": "",
+            "password": ""
+          }
+    $state.go('forgotPassword');
+  }
+
 });
