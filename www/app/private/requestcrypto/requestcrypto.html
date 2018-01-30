@@ -2,10 +2,10 @@
     <ion-content class="relative-position">
               <div class="row center padding-top">
                     <div class="col center">
-                      <img src="http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl=bitcoincash:{{userBCHAddress.userBCHAddress}},amount:{{requestAmountBCH}}" alt="QR Code"> 
+                      <img src="http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl=bitcoincash:{{user.VCNAddress}},amount:{{requestAmountBCH}}" alt="QR Code"> 
                       <div class="">
                         <span>
-                          {{userBCHAddress.userBCHAddress}} 
+                          {{user.VCNAddress}} 
                         </span>
                       </div>
                       
@@ -16,12 +16,12 @@
                       <div class="list">
                           <label class="item item-input">
                             <span class="input-label">Amount({{baseCoin}})</span>
-                            <input type="number" ng-model="requestAmountBCH" ng-change="myRequestFunc(requestAmountBCH)">
+                            <input type="number" ng-model="requestAmountBCH" placeholder="Amount" ng-change="myRequestFunc(requestAmountBCH)">
                           </label>
                       </div>  
               </div>
               <div class="center">
-                      <a class="btn-floating btn-large waves-effect center waves-light primary-color center" ng-click="shareBCHRequest('bitcoincash:'+userBCHAddress.userBCHAddress+', amount: '+requestAmountBCH)"><i class="material-icons">share</i></a>
+                      <a class="btn-floating btn-large waves-effect center waves-light primary-color center" ng-click="shareBCHRequest('bitcoincash:'+user.VCNAddress+', amount: '+requestAmountBCH)"><i class="material-icons">share</i></a>
               </div>
           </ion-content>
       

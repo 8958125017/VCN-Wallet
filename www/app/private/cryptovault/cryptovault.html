@@ -1,59 +1,56 @@
 <ion-view view-title="{{baseCoin}} Wallet">
   <ion-content>
- 
+
     <div class="primary-color white-text padding">
       <div class="row">
-        <h4 class="col white-text no-margin text-roboto"><span class="crypto-icon crypto-vault-symbol">{{baseCoinShortName}}&nbsp;</span>{{user.BCHbalance | number:5}}</h4>
-        <img src="http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl={{user.userBCHAddress}}" alt="QR Code" style="height: 10%; width: 10%;" ng-click="showConfirm()">
+        <h4 class="col white-text no-margin text-roboto"><span class="crypto-icon crypto-vault-symbol">{{baseCoinShortName}}&nbsp;</span>{{userBal.VCNBalance | number:7}}</h4>
+        <img src="http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl={{user.VCNAddress}}" alt="QR Code" style="height: 10%; width: 10%;" ng-click="showConfirm()">
       </div>
       <div class="row no-margin">
         <div class="col col-66  white-text">
-         <!--  <small style="color: #ffffff">Freezed {{baseCoin}} Balance </small><br><span class="">{{baseCoinShortName}}&nbsp;</span>{{user.FreezedBCHbalance | number:5}} -->
+          <!--  <small style="color: #ffffff">Freezed {{baseCoin}} Balance </small><br><span class="">{{baseCoinShortName}}&nbsp;</span>{{user.FreezedBCHbalance | number:5}} -->
         </div>
       </div>
     </div>
     <div class="list" style="background: #ececec;">
-          <a class="item item-avatar valign-wrapper" ui-sref="app.bchsent">
+      <a class="item item-avatar valign-wrapper" ui-sref="app.bchsent">
               <img src="img/Bitcoin_cash_Logo.png">
-              <h2>Sent Transactions</h2>             
-          </a><hr class="no-margin" >
-          <a class="item item-avatar valign-wrapper" ui-sref="app.bchreceived">
-              <img src="img/Bitcoin_cash_Logo.png">
-              <h2>Received Transactions</h2>              
+              <h2>Sent Transactions</h2>
           </a>
-          <!-- <hr class="no-margin" >
+      <hr class="no-margin">
+      <a class="item item-avatar valign-wrapper" ui-sref="app.bchreceived">
+              <img src="img/Bitcoin_cash_Logo.png">
+              <h2>Received Transactions</h2>
+          </a>
+      <!-- <hr class="no-margin" >
           <a class="item item-avatar valign-wrapper" ui-sref="app.buySellTransaction">
               <img src="img/Bitcoin_cash_Logo.png">
-              <h2>Buy/Sell Orders</h2>              
+              <h2>Buy/Sell Orders</h2>
           </a> -->
     </div>
     <ion-list>
-        <ion-item item="item" class=" margin-top item-remove-animate margin-left  blue lighten-1 margin" ng-repeat="bids in user.bids">
+      <ion-item item="item" class=" margin-top item-remove-animate margin-left  blue lighten-1 margin" ng-repeat="bids in user.bids">
 
-              <span>Bid Amount<h2 class="pull-right white-text">{{baseCoinShortName}}&nbsp;{{bids.bidAmountBCH}} &nbsp; @ {{bids.bidRate}} {{baseCoinShortName}}/{{targetCoinShortName}}</h2><br><span class="pull-right"> {{targetCoinShortName}}&nbsp;{{bids.bidAmountBTC}}</span><small><em>{{bids.createdAt| date:'dd-MM-yy HH:mm'}}</em></small></span>
-              <ion-delete-button class="ion-minus-circled"
-                       ng-click="items.splice($index, 1)">
-              </ion-delete-button>
-              <ion-option-button  class="button-assertive"
-                                 ng-click="removeBids(bids)">
-                <i class="small material-icons">delete</i>
-              </ion-option-button>
-        </ion-item>
-        <ion-item item="item" class=" margin-top item-remove-animate margin-left orange lighten-1 margin" ng-repeat="asks in user.asks">
+        <span>Bid Amount<h2 class="pull-right white-text">{{baseCoinShortName}}&nbsp;{{bids.bidAmountBCH}} &nbsp; @ {{bids.bidRate}} {{baseCoinShortName}}/{{targetCoinShortName}}</h2><br><span class="pull-right"> {{targetCoinShortName}}&nbsp;{{bids.bidAmountBTC}}</span><small><em>{{bids.createdAt| date:'dd-MM-yy HH:mm'}}</em></small></span>
+        <ion-delete-button class="ion-minus-circled" ng-click="items.splice($index, 1)">
+        </ion-delete-button>
+        <ion-option-button class="button-assertive" ng-click="removeBids(bids)">
+          <i class="small material-icons">delete</i>
+        </ion-option-button>
+      </ion-item>
+      <ion-item item="item" class=" margin-top item-remove-animate margin-left orange lighten-1 margin" ng-repeat="asks in user.asks">
 
-              <span>Ask Amount<h2 class="pull-right white-text">{{baseCoinShortName}}&nbsp;{{asks.askAmountBCH}} &nbsp; @ {{asks.askRate}} {{baseCoinShortName}}/{{targetCoinShortName}}</h2><br><span class="pull-right"> {{targetCoinShortName}}&nbsp;{{asks.askAmountBTC}}</span><small><em>{{asks.createdAt|date:'dd-MM-yy HH:mm'}}</em></small></span>
-              <ion-delete-button class="ion-minus-circled"
-                       ng-click="items.splice($index, 1)">
-              </ion-delete-button>
-              <ion-option-button  class="button-assertive"
-                                 ng-click="removeAsks(asks)">
-                <i class="small material-icons">delete</i>
-              </ion-option-button>
-        </ion-item>
-        <div class="row margin padding"></div>
+        <span>Ask Amount<h2 class="pull-right white-text">{{baseCoinShortName}}&nbsp;{{asks.askAmountBCH}} &nbsp; @ {{asks.askRate}} {{baseCoinShortName}}/{{targetCoinShortName}}</h2><br><span class="pull-right"> {{targetCoinShortName}}&nbsp;{{asks.askAmountBTC}}</span><small><em>{{asks.createdAt|date:'dd-MM-yy HH:mm'}}</em></small></span>
+        <ion-delete-button class="ion-minus-circled" ng-click="items.splice($index, 1)">
+        </ion-delete-button>
+        <ion-option-button class="button-assertive" ng-click="removeAsks(asks)">
+          <i class="small material-icons">delete</i>
+        </ion-option-button>
+      </ion-item>
+      <div class="row margin padding"></div>
     </ion-list>
   </ion-content>
-    <div class="fixed-action-btn toolbar">
+  <div class="fixed-action-btn toolbar">
     <a class="btn-floating btn-large primary-color" id="fab-crypto">
           <i class="large material-icons">import_export</i>
         </a>

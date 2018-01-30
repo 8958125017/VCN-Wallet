@@ -8,36 +8,34 @@
       <h4 class="white-text font-lighter">Hello there, <br>welcome back</h4>
     </div>
 
-<form class="col s12 center" name="frm" novalidate>
+    <form class="col s12 center" name="frm" novalidate>
 
 
-     <div class="row no-margin form-group">
-       <div class="custom-input-focus-color input-field col s12">   
-     <input type="email" class="form-control validate white-text" ng-model="user.email" name="email" autocomplete="off" required>
-       <label for="address" class="col center white-text">Email</label>
-       <span ng-show="frm.email.$dirty && frm.email.$invalid">
-      <span style="color:red;" ng-show="frm.email.$dirty && frm.email.$error.email">Email Address is not valid</span>
-       <span style="color:red;" ng-show="frm.email.$error.required">Email is Required</span>
-     </span>
-    </div>
-     </div>
-
-   
-
-    <div class="row no-margin form-group">
+      <div class="row no-margin form-group">
         <div class="custom-input-focus-color input-field col s12">
-             <input type="password" class="form-control validate white-text" ng-model="user.password" name="password"  autocomplete="off" required>
-             <label for="amount" class="col center white-text">Password</label>
-              <span style="color:red;" ng-show="frm.password.$dirty && frm.password.$error.required">Password is Required</span>
-          </div>
-     </div>
+          <input type="email" class="form-control validate white-text" ng-model="user.email" placeholder="Email" name="email" autocomplete="off" required>
+          <span ng-show="frm.email.$dirty && frm.email.$invalid">
+      <span style="color:red;" ng-show="frm.email.$dirty && frm.email.$error.email">Email Address is not valid</span>
+          <span style="color:red;" ng-show="frm.email.$error.required">Email is Required</span>
+          </span>
+        </div>
+      </div>
 
-     <button class="btn waves-effect waves-light light-blue-text darken-4-text white" type="submit" name="action" ng-disabled="frm.$invalid" ng-click="doLogin(user)">Log me in
+
+
+      <div class="row no-margin form-group">
+        <div class="custom-input-focus-color input-field col s12">
+          <input type="password" class="form-control validate white-text" ng-model="user.password" placeholder="Password" name="password" autocomplete="off" required>
+          <span style="color:red;" ng-show="frm.password.$dirty && frm.password.$error.required">Password is Required</span>
+        </div>
+      </div>
+
+      <button class="btn waves-effect waves-light light-blue-text darken-4-text white" type="submit" name="action" ng-disabled="frm.$invalid" ng-click="doLogin(user)">Log me in
         <i class="material-icons right">send</i>
       </button>
     </form>
 
-  
+
     <div class="row center">
       <span class="col center white-text">Forgot Password? <a  ng-click="forgotPassword()">Get New !</a></span><br>
     </div>

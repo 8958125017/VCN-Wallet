@@ -32,15 +32,7 @@
         templateUrl: 'app/public/forgotPassword/changePassword.html',
         controller: 'ForgotPasswordCtrl',
         authenticate: false
-      })
-      .state('pinlock', {
-        url: '/pinlock',
-        templateUrl: 'app/public/pinlock/pinlock.html',
-        controller: 'PinLockCtrl',
-        authenticate: false
-      })
-      
-
+      })   
       .state('app', {
         url: '/app',
         abstract: true,
@@ -59,83 +51,9 @@
         },
         authenticate: true
       })
-      .state('app.about', {
-        url: '/about',
-        views: {
-          'menuContent': {
-            templateUrl: 'app/public/about/about.html',
-            controller: 'AboutCtrl'
-          }
-        },
-        authenticate: true
-      })
+  
 
-      .state('app.buycrypto', {
-        url: '/buycrypto',
-        views: {
-          'menuContent': {
-            templateUrl: 'app/private/buycrypto/buycrypto.html',
-            controller: 'BuyCryptoCtrl',
-            resolve: {
-              currentPriceOfBTC: function(MyPayService) {
-                return MyPayService.getBidCoin();
-              }
-            }
-          }
-        },
-        authenticate: true
-      })
-
-      .state('app.sellcrypto', {
-        url: '/sellcrypto',
-        views: {
-          'menuContent': {
-            templateUrl: 'app/private/sellcrypto/sellcrypto.html',
-            controller: 'SellCryptoCtrl',
-            resolve: {
-              currentPriceOfBTC: function(MyPayService) {
-                return MyPayService.getBidCoin();
-              }
-            }
-          }
-        },
-        authenticate: true
-      })
-
-      .state('app.askcrypto', {
-        url: '/askcrypto',
-        views: {
-          'menuContent': {
-            templateUrl: 'app/private/askcrypto/askcrypto.html',
-            controller: 'AskCryptoCtrl',
-            resolve: {
-              currentPriceOfBTC: function(MyPayService) {
-                return MyPayService.getBidCoin();
-              }
-            }
-          }
-        },
-        authenticate: true
-      })
-
-      .state('app.bidcrypto', {
-        url: '/bidcrypto',
-        views: {
-          'menuContent': {
-            templateUrl: 'app/private/bidcrypto/bidcrypto.html',
-            controller: 'BidCryptoCtrl',
-            resolve: {
-              currentPriceOfBTC: function(MyPayService) {
-                return MyPayService.getBidCoin();
-              }
-            }
-          }
-        },
-        authenticate: true
-      })
-
-
-
+      
       .state('app.btcvault', {
         url: '/btcvault',
         views: {
@@ -269,7 +187,12 @@
         views: {
           'menuContent': {
             templateUrl: 'app/private/btctransaction/btcsent.html',
-            controller: 'AccountBTCStatementCtrl'
+            controller: 'AccountBTCStatementCtrl',
+            resolve: {
+              getCurrentUserData: function(MyPayService) {
+                return MyPayService.getCurrentUserData();
+              }
+            }
           }
         },
         authenticate: true
@@ -280,7 +203,12 @@
         views: {
           'menuContent': {
             templateUrl: 'app/private/btctransaction/btcreceived.html',
-            controller: 'AccountBTCStatementCtrl'
+            controller: 'AccountBTCStatementCtrl',
+            resolve: {
+              getCurrentUserData: function(MyPayService) {
+                return MyPayService.getCurrentUserData();
+              }
+            }
           }
         },
         authenticate: true
@@ -291,19 +219,12 @@
         views: {
           'menuContent': {
             templateUrl: 'app/private/getCrypto/getCrypto.html',
-            controller: 'GetVCNCtrl'
-          }
-        },
-        authenticate: true
-      })
-
-
-          .state('app.depositeBTC', {
-        url: '/depositeBTC',
-        views: {
-          'menuContent': {
-            templateUrl: 'app/private/depositeBTC/depositeBTC.html',
-            controller: 'DepositeBTCCtrl'
+            controller: 'GetVCNCtrl',
+            resolve: {
+              getCurrentUserData: function(MyPayService) {
+                return MyPayService.getCurrentUserData();
+              }
+            }
           }
         },
         authenticate: true
@@ -315,17 +236,28 @@
         views: {
           'menuContent': {
             templateUrl: 'app/private/bchtransaction/bchsent.html',
-            controller: 'AccountBCHStatementCtrl'
+            controller: 'AccountBCHStatementCtrl',
+            resolve: {
+              getCurrentUserData: function(MyPayService) {
+                return MyPayService.getCurrentUserData();
+              }
+            }
           }
         },
         authenticate: true
       })
+
       .state('app.bchreceived', {
         url: '/bchreceived',
         views: {
           'menuContent': {
             templateUrl: 'app/private/bchtransaction/bchreceived.html',
-            controller: 'AccountBCHStatementCtrl'
+            controller: 'AccountBCHStatementCtrl',
+            resolve: {
+              getCurrentUserData: function(MyPayService) {
+                return MyPayService.getCurrentUserData();
+              }
+            }
           }
         },
         authenticate: true

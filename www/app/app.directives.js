@@ -1,3 +1,22 @@
+mybccApp.controller('AppCtrl', function($rootScope, $scope, $ionicLoading, $ionicModal, $timeout, $state, AuthService, $localStorage, $window, $ionicHistory) {
+ 
+  $rootScope.user = $localStorage.credentials;
+  $scope.$on('floating-menu:open', function() {});
+  $scope.$on('floating-menu:close', function() {
+
+  });
+  var queryResult = angular.element(document.querySelector('.title'));
+  var wrappedQueryResult = angular.element(queryResult).removeClass('title-left'); 
+  $scope.logout = function() {
+      $rootScope = {};
+    $localStorage.$reset();
+    $state.go('userlogin');
+  }
+})
+
+
+
+
 mybccApp.factory('ConnectivityMonitor', function($rootScope, $cordovaNetwork) {
   return {
     isOnline: function() {
@@ -112,28 +131,7 @@ mybccApp.config(function(ionicDatePickerProvider) {
   ionicDatePickerProvider.configDatePicker(datePickerObj);
 })
 
-mybccApp.controller('AppCtrl', function($rootScope, $scope, $ionicLoading, $ionicModal, $timeout, $state, AuthService, $localStorage, $window, $ionicHistory) {
-  // alert("hello");// Form data for the login moda
-    $scope.logout = function() {
-    $rootScope = {};
-    $localStorage.$reset();
-    $state.go('userlogin');
-  }
- // alert("$scope.loginData  = "+angular.toJson($scope.loginData ));  
-  
-  
-  $rootScope.user = $localStorage.credentials.user;
-  $rootScope.userProfileDetails = $rootScope.user.email;
-  console.log(" $rootScope.userProfileDetails "+ $rootScope.userProfileDetails);
-  //console.log("$localStorage.credentials.user.email :: "+$localStorage.credentials.user.email) ;
-  $scope.$on('floating-menu:open', function() {});
-  $scope.$on('floating-menu:close', function() {
 
-  });
-  var queryResult = angular.element(document.querySelector('.title'));
-  var wrappedQueryResult = angular.element(queryResult).removeClass('title-left');
-  console.log(wrappedQueryResult);
-})
 
 
 mybccApp.directive('qrcode', function($interpolate) {

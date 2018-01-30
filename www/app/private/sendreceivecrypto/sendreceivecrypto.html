@@ -3,21 +3,17 @@
   <ion-content class="relative-position">
     <div class="primary-color white-text padding">
       <div class="row">
-        <h4 class="col white-text no-margin text-roboto"><span class="crypto-icon crypto-vault-symbol">{{baseCoinShortName}}&nbsp;</span>{{user.BCHbalance | number:5}}</h4>
-        <img src="http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl={{userBCHAddress.userBCHAddress}}" alt="QR Code" style="height: 10%; width: 10%;" ng-click="showConfirm()">
+        <h4 class="col white-text no-margin text-roboto"><span class="crypto-icon crypto-vault-symbol">{{baseCoinShortName}}&nbsp;</span>{{userBal.VCNBalance | number:5}}</h4>
+        <img src="http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl={{user.VCNAddress}}" alt="QR Code" style="height: 10%; width: 10%;" ng-click="showConfirm()">
       </div>
-      <!-- <div class="row no-margin">
-        <div class="col col-66  white-text">
-          <small style="color: #a9a9a9">Freezed {{baseCoin}} Balance </small><br><span class="">{{baseCoinShortName}}&nbsp;</span>{{user.FreezedBCHbalance | number:5}}
-        </div>
-      </div> -->
+ 
     </div>
     <div class="row">
       <form class="col s12 center">
 
         <div class="row">
           <div class="input-field col s12">
-            <input id="address" type="text" ng-model="values.recieverBCHCoinAddress" >
+            <input id="address" type="text" ng-model="values.recieverCoinAddress" >
             <label for="address" id="focusBchAddress">Address</label>
           </div>
         </div>

@@ -1,6 +1,5 @@
- <ion-view view-title="Sent {{baseCoin}}">
+<ion-view view-title="Sent {{baseCoin}}">
   <ion-pane>
-
     <ion-content class="white">
       <div ng-repeat="all in data | orderBy : '-time'">
         <div ng-show="all.category == 'send'" class="card white-text blue lighten-1 margin padding">
@@ -20,9 +19,6 @@
           </div>
         </div>
       </div>
-        
-      
     </ion-content>
   </ion-pane>
 </ion-view>
-

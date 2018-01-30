@@ -1,30 +1,31 @@
- mybccApp.controller('ChangeSpendingPassword', function($scope, $state, ionicMaterialInk,$ionicLoading, ConnectivityMonitor, $rootScope, $ionicPopup, $localStorage, MyPayService, getCurrentUserData) {
-  ionicMaterialInk.displayEffect();
+ mybccApp.controller('ChangeSpendingPassword', function($scope, $state, ionicMaterialInk, $ionicLoading, ConnectivityMonitor, $rootScope, $ionicPopup, $localStorage, MyPayService, getCurrentUserData) {
+   ionicMaterialInk.displayEffect();
    $scope.newSpendingPasswordvalue = {
-     "userMailId": getCurrentUserData.email,
-     "newSpendingPassword": "",
-     "confirmSpendingPassword": ""
+     "userMailId": "",
+     "currentPassword":"",
+     "newPin": "",
+     "confirmNewPin": ""
    }
-var strongRegularExp = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
-var mediumRegularExp = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{5,})");
-$scope.checkpwdStrength = {
-        "width": "150px",
-        "height": "17px",
-        "float": "left"
-      };
+   var strongRegularExp = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+   var mediumRegularExp = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{5,})");
+   $scope.checkpwdStrength = {
+     "width": "150px",
+     "height": "17px",
+     "float": "left"
+   };
 
-$scope.validationInputPwdText = function(value) {
-        if (strongRegularExp.test(value)) {
-          $scope.checkpwdStrength["background-color"] = "green";
-          $scope.passStrength="strong";
-        } else if (mediumRegularExp.test(value)) {
-          $scope.checkpwdStrength["background-color"] = "orange";
-          $scope.passStrength="medium";
-        } else {
-          $scope.checkpwdStrength["background-color"] = "red";
-           $scope.passStrength="week";
-        }
-      };
+   $scope.validationInputPwdText = function(value) {
+     if (strongRegularExp.test(value)) {
+       $scope.checkpwdStrength["background-color"] = "green";
+       $scope.passStrength = "strong";
+     } else if (mediumRegularExp.test(value)) {
+       $scope.checkpwdStrength["background-color"] = "orange";
+       $scope.passStrength = "medium";
+     } else {
+       $scope.checkpwdStrength["background-color"] = "red";
+       $scope.passStrength = "week";
+     }
+   };
 
 
    // change spending password
@@ -39,19 +40,21 @@ $scope.validationInputPwdText = function(value) {
          title: "please enter confirm new password ",
        });
      } else if (ConnectivityMonitor.isOffline()) {
-       Materialize.toast("internet is disconnected on your device !!",4000);   
+       Materialize.toast("internet is disconnected on your device !!", 4000);
      } else {
        $scope.show($ionicLoading);
-       console.log("$scope.newSpendingPasswordvalue = = "+angular.toJson($scope.newSpendingPasswordvalue));
+       $scope.newSpendingPasswordvalue.userMailId=getCurrentUserData.email;
+       console.log("$scope.newSpendingPasswordvalue = = " + angular.toJson($scope.newSpendingPasswordvalue));
        MyPayService.setNewSpendingPassord($scope.newSpendingPasswordvalue).then(function(response) {
          if (response.data.statusCode == 200) {
            $scope.hide($ionicLoading);
            var alertPopup = $ionicPopup.alert({
-             title: "Spending Password update successfully",
+             title: "PIN update successfully",
            });
            $scope.newSpendingPasswordvalue = {
-             "newSpendingPassword": "",
-             "confirmSpendingPassword": ""
+             "currentPassword":"",
+             "newPin": "",
+             "confirmNewPin": ""
            };
            $state.go('userlogin');
          } else {
@@ -60,8 +63,9 @@ $scope.validationInputPwdText = function(value) {
              title: response.data.message,
            });
            $scope.newSpendingPasswordvalue = {
-             "newSpendingPassword": "",
-             "confirmSpendingPassword": ""
+             "currentPassword":"",
+             "newPin": "",
+             "confirmNewPin": ""
            };
          }
        });
@@ -80,12 +84,12 @@ $scope.validationInputPwdText = function(value) {
    };
 
 
-$scope.passwordMatch=function(password){
-if($scope.newSpendingPasswordvalue.confirmSpendingPassword!=password){
-  $scope.noData = true;
-}else{
-   $scope.noData = false;
-}
-}
+   $scope.passwordMatch = function(password) {
+     if ($scope.newSpendingPasswordvalue.confirmNewPin != password) {
+       $scope.noData = true;
+     } else {
+       $scope.noData = false;
+     }
+   }
 
  });

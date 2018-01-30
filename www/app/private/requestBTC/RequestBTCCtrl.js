@@ -1,9 +1,9 @@
-mybccApp.controller('RequestBTCCtrl', function($rootScope, $scope, $localStorage, MyPayService, $ionicActionSheet, $cordovaSocialSharing, $ionicActionSheet, $timeout,ionicMaterialInk) {
-  $scope.userBTCAddress = $localStorage.credentials.user;
-  $rootScope.user = $localStorage.credentials.user;
+mybccApp.controller('RequestBTCCtrl', function($rootScope, $scope, $localStorage, MyPayService, $ionicActionSheet, $cordovaSocialSharing, $ionicActionSheet, $timeout, ionicMaterialInk) {
+
+  $rootScope.user = $localStorage.credentials;
   ionicMaterialInk.displayEffect();
-  $scope.requestAmountBTC = "0";
-  $scope.shareBTCRequest = function(address) {   
+  $scope.requestAmountBTC = '';
+  $scope.shareBTCRequest = function(address) {
     // Show the action sheet
     var hideSheet = $ionicActionSheet.show({
       buttons: [{
@@ -39,7 +39,7 @@ mybccApp.controller('RequestBTCCtrl', function($rootScope, $scope, $localStorage
             alert("Error: Cannot Share")
           });
         }
-        
+
       }
     });
 

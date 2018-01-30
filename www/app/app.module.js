@@ -17,7 +17,7 @@ var mybccApp = angular.module('starter', ['ionic', 'ngCordova', 'ionic-material'
 
       }
       if (window.StatusBar) {        
-            StatusBar.backgroundColorByHexString("#4f52ba");        
+            StatusBar.backgroundColorByHexString("#263147");        
       }
        var firstVisit = localStorage.getItem('firstVisit');
           if (!firstVisit) {

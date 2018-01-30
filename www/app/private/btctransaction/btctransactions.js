@@ -1,4 +1,4 @@
-mybccApp.controller('AccountBTCStatementCtrl', function($ionicLoading, $scope, ConnectivityMonitor, $localStorage, $ionicPopup, MyPayService,ionicMaterialInk) {
+mybccApp.controller('AccountBTCStatementCtrl', function($ionicLoading, $scope, ConnectivityMonitor, $localStorage, $ionicPopup, MyPayService, ionicMaterialInk,getCurrentUserData ) {
   ionicMaterialInk.displayEffect();
   $scope.show = function() {
     $ionicLoading.show({
@@ -9,11 +9,11 @@ mybccApp.controller('AccountBTCStatementCtrl', function($ionicLoading, $scope, C
     $ionicLoading.hide();
   };
   $scope.emailId = {
-    "userMailId": $localStorage.credentials.user.email
+    "userMailId": getCurrentUserData.email
   }
 
   if (ConnectivityMonitor.isOffline()) {
-    Materialize.toast("internet is disconnected on your device !!",4000);   
+    Materialize.toast("internet is disconnected on your device !!", 4000);
   } else {
     $scope.show($ionicLoading);
     MyPayService.getBTCTransactions($scope.emailId).then(function(response) {
@@ -32,9 +32,9 @@ mybccApp.controller('AccountBTCStatementCtrl', function($ionicLoading, $scope, C
       }
     });
   }
- 
-    $scope.transDetails = function(id) {
-    $scope.id=id;  
+
+  $scope.transDetails = function(id) {
+    $scope.id = id;
     var confirmPopup = $ionicPopup.confirm({
       title: 'Transaction Details',
       scope: $scope,
@@ -48,10 +48,10 @@ mybccApp.controller('AccountBTCStatementCtrl', function($ionicLoading, $scope, C
       }
     });
   }
-  $scope.copyTransactionAddress = function(id) { 
-  console.log(id);  
-    $cordovaClipboard.copy(id).then(function() {    
-       Materialize.toast('Text Copied !!', 2000);
+  $scope.copyTransactionAddress = function(id) {
+    console.log(id);
+    $cordovaClipboard.copy(id).then(function() {
+      Materialize.toast('Text Copied !!', 2000);
     }, function() {
       console.error("There was an error copying");
     });

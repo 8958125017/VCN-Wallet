@@ -1,9 +1,8 @@
-mybccApp.controller('RequestCryptoCtrl', function($rootScope, $scope, $localStorage, MyPayService, ionicMaterialInk,$ionicActionSheet, $cordovaSocialSharing, $ionicActionSheet, $timeout) {
+mybccApp.controller('RequestCryptoCtrl', function($rootScope, $scope, $localStorage, MyPayService, ionicMaterialInk, $ionicActionSheet, $cordovaSocialSharing, $ionicActionSheet, $timeout) {
   ionicMaterialInk.displayEffect();
-  $scope.userBCHAddress = $localStorage.credentials.user;
-  $rootScope.user = $localStorage.credentials.user;
-  $scope.requestAmountBCH = "0";
-  $scope.shareBCHRequest = function(address) {   
+  $rootScope.user = $localStorage.credentials;
+  $scope.requestAmountBCH = '';
+  $scope.shareBCHRequest = function(address) {
     // Show the action sheet
     var hideSheet = $ionicActionSheet.show({
       buttons: [{
@@ -25,12 +24,12 @@ mybccApp.controller('RequestCryptoCtrl', function($rootScope, $scope, $localStor
       },
       buttonClicked: function(index) {
         if (index === 0) {
-          window.plugins.socialsharing.shareViaWhatsApp(address, null /* img */ ,null /* url */ , null, function(errormsg) {
+          window.plugins.socialsharing.shareViaWhatsApp(address, null /* img */ , null /* url */ , null, function(errormsg) {
             alert("Error: Cannot Share");
           });
         }
         if (index === 1) {
-          window.plugins.socialsharing.shareViaFacebook(address, null /* img */ ,null /* url */ , null, function(errormsg) {
+          window.plugins.socialsharing.shareViaFacebook(address, null /* img */ , null /* url */ , null, function(errormsg) {
             alert("Error: Cannot Share")
           });
         }

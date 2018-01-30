@@ -1,5 +1,5 @@
-mybccApp.controller('LoginCtrl', function($ionicLoading, $timeout, $scope, $rootScope, $state,ionicMaterialInk, ConnectivityMonitor, MyPayService, $localStorage, $ionicPopup, AuthService) {
-ionicMaterialInk.displayEffect();
+mybccApp.controller('LoginCtrl', function($ionicLoading, $timeout, $scope, $rootScope, $state, ionicMaterialInk, ConnectivityMonitor, MyPayService, $localStorage, $ionicPopup, AuthService) {
+  ionicMaterialInk.displayEffect();
   $scope.show = function() {
     $ionicLoading.show({
       template: '<p>Loading...</p><ion-spinner></ion-spinner>'
@@ -17,28 +17,42 @@ ionicMaterialInk.displayEffect();
   }
 
   $scope.user = {
-    "email": "",
-    "password": ""
+    "email": "pankajjoshi115@gmail.com",
+    "password": "p@nk@j30SKH02"
+  }
+
+   $scope.emailId = {
+       "userMailId": ""
   }
 
   $scope.doLogin = function(user) {
     if (ConnectivityMonitor.isOffline()) {
-      Materialize.toast("internet is disconnected on your device !!",4000);   
+      Materialize.toast("internet is disconnected on your device !!", 4000);
     } else {
+      $rootScope = {};
+      $localStorage.$reset();
       $scope.show($ionicLoading);
-      MyPayService.loginUser($scope.user).then(function(response) {
-        if (response.data.statusCode == 200) {
-          $localStorage.credentials = response.data;
-          $rootScope.user = $localStorage.credentials.user;
-          $rootScope.userProfileDetails = $localStorage.credentials.user.email;
-          $rootScope.$broadcast("user", response.data);
+      MyPayService.loginUser($scope.user).then(function(response) {   
+      console.log("response "+angular.toJson(response));   
+        if (response.data.statusCode == 200) {    
+           $localStorage.credentials = response.data.user;          
+           $rootScope.user = $localStorage.credentials; 
+           $scope.emailId.userMailId=response.data.user.email;
+             MyPayService.getBidCoin().then(function(response) {    
+              if (response.statusCode == 200) {          
+                   $rootScope.usdRate = response.currentBTCprice;          
+                       } 
+              });
+             MyPayService.CurrntBalance($scope.emailId).then(function(response) {       
+                if (response.data.statusCode == 200) {
+                  $localStorage.cryptoBalance = response.data;
+                     $rootScope.userBal = $localStorage.cryptoBalance;
+                 }
+             });
           $scope.hide($ionicLoading);
-          $scope.user = {
-            "email": "",
-            "password": ""
-          }
+          $scope.user = { };
           $state.go('app.dashboard');
-        } else if (response.data.statusCode >= 400) {
+        } else  {
           $scope.hide($ionicLoading);
           var alertPopup = $ionicPopup.alert({
             title: response.data.message,
@@ -53,18 +67,18 @@ ionicMaterialInk.displayEffect();
   }
 
   $scope.signUp = function() {
-     $scope.user = {
-            "email": "",
-            "password": ""
-          }
+    $scope.user = {
+      "email": "",
+      "password": ""
+    }
     $state.go('signup');
   }
 
- $scope.forgotPassword = function() {
-   $scope.user = {
-            "email": "",
-            "password": ""
-          }
+  $scope.forgotPassword = function() {
+    $scope.user = {
+      "email": "",
+      "password": ""
+    }
     $state.go('forgotPassword');
   }
 

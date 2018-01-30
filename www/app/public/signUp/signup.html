@@ -12,58 +12,67 @@
     <form class="col s12 center" name="frm" novalidate>
 
 
-     <div class="row no-margin form-group">
-       <div class="custom-input-focus-color input-field col s12">   
-     <input type="email" class="form-control validate white-text" ng-model="user.email" name="email" autocomplete="off" required>
-       <label for="address" class="col center white-text">Email</label>
-      <span style="color:red;" ng-show="frm.email.$dirty && frm.email.$invalid">Email Address is not valid</span>
-    </div>
-     </div>
-
-   
-
-    <div class="row no-margin form-group">
+      <div class="row no-margin form-group">
         <div class="custom-input-focus-color input-field col s12">
-             <input type="password" class="form-control validate white-text" ng-model="user.password" ng-change="validationInputPwdText(user.password)" name="password"  autocomplete="off" ng-minlength="6" ng-maxlength="20" required>
-             <label for="amount" class="col center white-text">Password</label>
-             <span ng-style="checkpwdStrength">{{passStrength}}</span>
-              <span style="color:red;" ng-show="frm.password.$dirty && frm.password.$error.minlength">Password should be  6 charecters</span>
-              <span style="color:red;" ng-show="frm.password.$dirty && frm.password.$error.maxlength">Max-length of password reached</span>
-          </div>
-     </div>
-
-
-      <div class="row no-margin">
-        <div class="custom-input-focus-color input-field col s12">
-          <input id="confirm_password" type="password" ng-model="user.confirmPassword"  required class="form-control validate white-text" ng-change="passwordMatch(user.password)">
-          <label for="amount" class="col center white-text">Confirm Password</label>
-           <span style="color:red;" ng-show="frm.user.confirmPassword.$error.required">Required</span>
-        <span style="color:red;" ng-show="noData">Passwords do not match.</span>
+          <input type="text" class="form-control validate white-text" placeholder="User Name" ng-model="user.name" name="name" autocomplete="off" required>
+          <span ng-show="frm.name.$dirty && frm.name.$invalid">
+       <span style="color:red;" ng-show="frm.name.$error.required">User Name is Required</span>
+          </span>
         </div>
       </div>
+
+      <div class="row no-margin form-group">
+        <div class="custom-input-focus-color input-field col s12">
+          <input type="email" class="form-control validate white-text" placeholder="Email" ng-model="user.email" name="email" autocomplete="off" required>
+          <span ng-show="frm.email.$dirty && frm.email.$invalid">
+         <span style="color:red;" ng-show="frm.email.$error.required">Email is Required</span>
+          <span style="color:red;" ng-show="!frm.email.$error.required && frm.email.$dirty && frm.email.$invalid">Email Address is not valid</span>
+        </div>
+      </div>
+
 
 
       <div class="row no-margin form-group">
         <div class="custom-input-focus-color input-field col s12">
-             <input type="password" class="form-control validate white-text" ng-model="user.spendingpassword" ng-change="validationSpendingPwdText(user.spendingpassword)" name="spendingpassword"  autocomplete="off" ng-minlength="6" ng-maxlength="16" required>
-             <label for="amount" class="col center white-text">Spending Password</label>
-             <span ng-style="checkspendingPWDStrength">{{SpendingStrength}}</span>
-              <span style="color:red;" ng-show="frm.spendingpassword.$dirty && frm.spendingpassword.$error.minlength">Password should be  6 charecters</span>
-              <span style="color:red;" ng-show="frm.spendingpassword.$dirty && frm.spendingpassword.$error.maxlength">Max-length of Spending Password Reached</span>
-          </div>
-     </div>
-
-<div class="row no-margin">
-        <div class="custom-input-focus-color input-field col s12">
-          <input id="confirmSpendingPassword" type="password" ng-model="user.confirmSpendingpassword"  required class="form-control validate white-text" ng-change="confirmspendingpasswordMatch(user.spendingpassword)">
-          <label for="amount" class="col center white-text">Confirm Spending Password</label>
-        <span style="color:red;" ng-show="frm.user.confirmSpendingpassword.$error.required">Required</span>
-        <span style="color:red;" ng-show="noData1">Confirm Spending Password do not match.</span>
+          <input type="password" class="form-control validate white-text" ng-model="user.password" placeholder="Password" ng-change="validationInputPwdText(user.password)" name="password" autocomplete="off" ng-minlength="6" ng-maxlength="20" required>
+          <span ng-style="checkpwdStrength">{{passStrength}}</span>
+          <span ng-show="frm.password.$dirty && frm.password.$invalid">
+                <span style="color:red;" ng-show="frm.password.$error.required">Password is Required</span>
+          <span style="color:red;" ng-show="frm.password.$dirty && frm.password.$error.minlength">Password should be  6 charecters</span>
+          <span style="color:red;" ng-show="frm.password.$dirty && frm.password.$error.maxlength">Max-length of password reached</span>
         </div>
       </div>
 
 
-     
+      <div class="row no-margin">
+        <div class="custom-input-focus-color input-field col s12">
+          <input id="confirm_password" type="password" ng-model="user.confirmPassword" placeholder="Confirm Password" required class="form-control validate white-text" name="confirm_password" ng-change="passwordMatch(user.password)">
+          <span style="color:red;" ng-show="frm.user.confirmPassword.$error.required">Required</span>
+          <span style="color:red;" ng-show="noData">Passwords do not match.</span>
+        </div>
+      </div>
+
+
+
+      <div class="row no-margin form-group">   
+        <div class="custom-input-focus-color input-field col s12">
+          <input type="number" class="form-control validate white-text" ng-model="user.spendingpassword"  placeholder="PIN" name="spendingpassword" autocomplete="off" ng-minlength="6" ng-maxlength="6" required> 
+          <span ng-show="frm.spendingpassword.$dirty && frm.spendingpassword.$invalid">  
+           <span style="color:red;" ng-show="frm.spendingpassword.$error.required">PIN is Required</span>       
+          <span style="color:red;" ng-show="frm.spendingpassword.$dirty && frm.spendingpassword.$error.minlength">PIN should be  6 digits</span>
+          <span style="color:red;" ng-show="frm.spendingpassword.$dirty && frm.spendingpassword.$error.maxlength">PIN should be  6 digits</span>
+        </div>
+      </div>
+
+      <div class="row no-margin">
+        <div class="custom-input-focus-color input-field col s12">
+          <input id="confirmSpendingPassword" type="number" ng-model="user.confirmSpendingpassword" placeholder="Confirm PIN" required class="form-control validate white-text" ng-change="confirmspendingpasswordMatch(user.spendingpassword)">           
+          <span style="color:red;" ng-show="frm.confirmSpendingpassword.$error.required">PIN is Required</span>         
+          <span style="color:red;" ng-show="noData1">PIN do not match.</span>
+        </div>
+      </div>
+
+
       <button class="btn waves-effect waves-light light-blue-text darken-4-text white" type="submit" name="action" ng-disabled="frm.$invalid" ng-click="createNewUser(user)">Get Started
         <i class="material-icons right">send</i>
       </button>

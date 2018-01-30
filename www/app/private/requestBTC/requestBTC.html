@@ -3,10 +3,10 @@
      <div class="row center">
                     
                     <div class="col center">
-                      <img src="http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl=bitcoin:{{userBTCAddress.userBTCAddress}},amount:{{requestAmountBTC}}" alt="QR Code"> 
+                      <img src="http://chart.apis.google.com/chart?cht=qr&chs=300x300&chl=bitcoin:{{user.BTCAddress}},amount:{{requestAmountBTC}}" alt="QR Code"> 
                       <div class="">
                         <span>
-                          {{userBTCAddress.userBTCAddress}} 
+                          {{user.BTCAddress}} 
                         </span>
                       </div>
                       
@@ -17,12 +17,12 @@
                       <div class="list">
                           <label class="item item-input">
                             <span class="input-label">Amount({{targetCoin}})</span>
-                            <input type="number" ng-model="requestAmountBTC" ng-change="myRequestFunc(requestAmountBTC)">
+                            <input type="number" ng-model="requestAmountBTC" placeholder="Amount" ng-change="myRequestFunc(requestAmountBTC)">
                           </label>
                       </div>  
               </div>
               <div class="center">
-                      <a class="btn-floating btn-large waves-effect center waves-light primary-color center" ng-click="shareBTCRequest('bitcoin:'+userBTCAddress.userBTCAddress+', amount: '+requestAmountBTC)"><i class="material-icons">share</i></a>
+                      <a class="btn-floating btn-large waves-effect center waves-light primary-color center" ng-click="shareBTCRequest('bitcoin:'+user.BTCAddress+', amount: '+requestAmountBTC)"><i class="material-icons">share</i></a>
               </div>
 
   </ion-content>
