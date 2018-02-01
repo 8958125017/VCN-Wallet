@@ -1,14 +1,37 @@
 mybccApp.controller('GetVCNCtrl', function($scope, $rootScope, $state, $ionicLoading, ConnectivityMonitor, $localStorage, $ionicPopup, MyPayService, ionicMaterialInk,getCurrentUserData) {
     ionicMaterialInk.displayEffect();
-   $rootScope.user = $localStorage.credentials;
+     $rootScope.user = $localStorage.credentials;
+    // alert("json "+angular.toJson($localStorage.credentials));
+    $scope.show = function() {
+    $ionicLoading.show({
+      template: '<p>Loading...</p><ion-spinner></ion-spinner>'
+    });
+  };
+
+  $scope.hide = function() {
+    $ionicLoading.hide();
+  };
+   $scope.show($ionicLoading);
+   $scope.emailId = {
+       "userMailId": ""
+  }
+  $scope.emailId.userMailId=getCurrentUserData.email;
+   MyPayService.CurrntBalance($scope.emailId).then(function(response) {       
+        if (response.data.statusCode == 200) {
+          $scope.hide($ionicLoading);   
+           $localStorage.cryptoBalance = response.data;
+            $rootScope.userBal = $localStorage.cryptoBalance;
+        }
+      });  
    MyPayService.getBidCoin().then(function(response) {    
-         if (response.statusCode == 200) {          
+         if (response.statusCode == 200) {     
+               $scope.hide($ionicLoading);     
                $rootScope.usdRate = response.currentBTCprice;          
                } 
           });
-   MyPayService.getVCNprice().then(function(response) {  
-        console.log("response = = "+angular.toJson(response));  
-         if (response.statusCode == 200) {                     
+   MyPayService.getVCNprice().then(function(response) {        
+         if (response.statusCode == 200) {        
+              $scope.hide($ionicLoading);             
                $rootScope.vcnRate = response.askRate; 
                } 
           });
@@ -18,15 +41,7 @@ mybccApp.controller('GetVCNCtrl', function($scope, $rootScope, $state, $ionicLoa
     $scope.isDisable = true;
   };
 
-  $scope.show = function() {
-    $ionicLoading.show({
-      template: '<p>Loading...</p><ion-spinner></ion-spinner>'
-    });
-  };
-
-  $scope.hide = function() {
-    $ionicLoading.hide();
-  };
+  
 
   $scope.VCNtxDetail = {
     "spendingPassword": "",
@@ -42,7 +57,7 @@ mybccApp.controller('GetVCNCtrl', function($scope, $rootScope, $state, $ionicLoa
       Materialize.toast("internet is disconnected on your device !!", 4000);
     } else {
       var alertPopup = $ionicPopup.show({
-        template: '<span>Get@' + '{{ btcindollor.btcDoller}}' + ' VCN</span><br><br><input type="number" placeholder="Enter your PIN" ng-model="VCNtxDetail.spendingPassword">',
+        template: '<input type="number" placeholder="Enter your PIN" ng-model="VCNtxDetail.spendingPassword">',
         title: 'Enter PIN ',
         scope: $scope,
         buttons: [{
@@ -60,13 +75,16 @@ mybccApp.controller('GetVCNCtrl', function($scope, $rootScope, $state, $ionicLoa
             text: '<b>Submit</b>',
             type: 'button-positive',
             onTap: function(e) {
-              if (ConnectivityMonitor.isOffline()) {
-               
+              if ($scope.VCNtxDetail.spendingPassword == "") {
+                     var alertPopup = $ionicPopup.alert({
+                  title: "Please enter pin",
+                 });
+             }
+              else  if (ConnectivityMonitor.isOffline()) {               
                 Materialize.toast("internet is disconnected on your device !!", 4000);
               } else {
                 $scope.show($ionicLoading);
-                 $scope.VCNtxDetail.userMailId=getCurrentUserData.email;
-                 console.log("$scope.VCNtxDetail = = "+angular.toJson($scope.VCNtxDetail));
+                 $scope.VCNtxDetail.userMailId=getCurrentUserData.email;                
                 MyPayService.VCNtransactions($scope.VCNtxDetail).then(function(response) {
                 
                   if (response.data.statusCode == 200) {
@@ -75,18 +93,23 @@ mybccApp.controller('GetVCNCtrl', function($scope, $rootScope, $state, $ionicLoa
                       title: response.data.message,
                     });
                      $scope.VCNtxDetail = {
-                     "userMailId": "",
+                     "userMailId": getCurrentUserData.email,
                      "amount": "",
                      "spendingPassword": ""
                     };
                     $state.go('app.dashboard');
                   } else {
-                    $scope.VCNtxDetail = "";
-                    $scope.hide($ionicLoading);
+
+                     $scope.hide($ionicLoading);
+                     console.log("responss"+angular.toJson(response));
+                    $scope.VCNtxDetail = {
+                     //"amount": "",
+                     "spendingPassword": ""
+                    };
                     var alertPopup = $ionicPopup.alert({
                       title: response.data.message,
                     });
-                    $state.go('app.dashboard');
+                    //$state.go('app.dashboard');
                   }
                 });
 

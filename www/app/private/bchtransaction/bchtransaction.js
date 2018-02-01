@@ -18,12 +18,10 @@ mybccApp.controller('AccountBCHStatementCtrl', function($ionicLoading, Connectiv
     $scope.show($ionicLoading);
     $scope.values.currency="BTC";
     $scope.values.userMailId=getCurrentUserData.email;
-    MyPayService.getCoinTransactionsList($scope.values).then(function(response) {
-      console.log("Response :: " + angular.toJson(response));
+    MyPayService.getCoinTransactionsList($scope.values).then(function(response) {     
       if (response.data.statusCode == 200) {
         $scope.hide($ionicLoading);
-        $scope.data = response.data.tx;
-        console.log("data category" + angular.toJson($scope.data));
+        $scope.data = response.data.tx;       
         if ($scope.data.length == 0) {
           $scope.noData = true;
           $scope.hide($ionicLoading);
@@ -53,8 +51,7 @@ mybccApp.controller('AccountBCHStatementCtrl', function($ionicLoading, Connectiv
     });
   }
 
-  $scope.copyTransactionAddress = function(id) {
-    console.log(id);
+  $scope.copyTransactionAddress = function(id) {   
     $cordovaClipboard.copy(id).then(function() {
       console.log("Copied text");
       Materialize.toast('Text Copied !!', 2000);

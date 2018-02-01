@@ -19,8 +19,7 @@ mybccApp.controller('AccountBTCStatementCtrl', function($ionicLoading,$state, $s
     $scope.show($ionicLoading);
     $scope.values.currency="BTC";
     $scope.values.userMailId=getCurrentUserData.email;
-    MyPayService.getCoinTransactionsList($scope.values).then(function(response) {
-      console.log("Response :: " + angular.toJson(response));
+    MyPayService.getCoinTransactionsList($scope.values).then(function(response) {     
       if (response.data.statusCode == 200) {
         $scope.hide($ionicLoading);
         $scope.data = response.data.tx;

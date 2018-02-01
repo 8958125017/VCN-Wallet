@@ -1,6 +1,9 @@
 <ion-view view-title="Get VCN">
   <ion-content style="overflow-y: auto !important;">
      <div class="primary-color white-text padding-top ">
+            <div class="row">
+        <h4 class="col white-text no-margin text-roboto"><span class="crypto-icon crypto-vault-symbol">{{targetCoinShortName}}&nbsp;</span>{{userBal.BTCBalance | number:7}}</h4>
+         </div>
       <div class="row center no-margin">
         <h5 class="center col white-text text-roboto">1 {{baseCoin}}={{usdRate}} {{targetCoin}} </h5>
       </div>
@@ -10,7 +13,7 @@
 
   <div class="row">
       <form class="col s12 center" name="frm" novalidate ">
-
+ 
         <div class="row">
           <div class="input-field col s12">
            <input type="number" class="form-control validate" ng-model="VCNtxDetail.amount" step="0.00001" name="amount" autocomplete="off" required ng-change="myFunc(VCNtxDetail.amount)">

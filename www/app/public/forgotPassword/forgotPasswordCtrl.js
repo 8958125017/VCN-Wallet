@@ -67,8 +67,7 @@ mybccApp.controller('ForgotPasswordCtrl', function($scope, $rootScope, $state, i
   }
 
 
-  $scope.newPassword = function(newPasswordvalue) {
-    console.log(" userMailId = =" + angular.toJson($scope.newPasswordvalue.userMailId))
+  $scope.newPassword = function(newPasswordvalue) {   
     if ($scope.newPasswordvalue.newPassword == "") {
       var alertPopup = $ionicPopup.alert({
         title: "please enter new password",

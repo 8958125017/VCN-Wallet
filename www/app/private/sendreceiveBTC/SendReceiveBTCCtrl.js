@@ -48,7 +48,7 @@ mybccApp.controller('SendReceiveBTCCtrl', function($scope, $state, $rootScope, $
       });
     } else {
       var alertPopup = $ionicPopup.show({
-        template: '<input type="number" placeholder="pin" ng-model="values.spendingPassword" autofocus>',
+        template: '<input type="number" placeholder="Enter your PIN" ng-model="values.spendingPassword" autofocus>',
         title: 'Enter PIN ',
         scope: $scope,
         buttons: [{
@@ -67,15 +67,18 @@ mybccApp.controller('SendReceiveBTCCtrl', function($scope, $state, $rootScope, $
             text: '<b>Submit</b>',
             type: 'button-positive',
             onTap: function(e) {
-              if (ConnectivityMonitor.isOffline()) {
+             if ($scope.values.spendingPassword == "") {
+                     var alertPopup = $ionicPopup.alert({
+                  title: "Please enter pin",
+                 });
+             }
+              else if (ConnectivityMonitor.isOffline()) {
                 Materialize.toast("internet is disconnected on your device !!", 4000);
               } else {
                 $scope.show($ionicLoading);        
                 $scope.values.currency="BTC";       
-                $scope.values.userMailId=getCurrentUserData.email;
-                 console.log("$scope.values = = "+angular.toJson($scope.values));
-                MyPayService.sendCoinByUser($scope.values).then(function(response) {
-                  console.log("response = = " + angular.toJson(response));
+                $scope.values.userMailId=getCurrentUserData.email;                 
+                MyPayService.sendCoinByUser($scope.values).then(function(response) {              
                   if (response.data.statusCode == 200) {
                         MyPayService.CurrntBalance($scope.emailId).then(function(response) {       
                       if (response.data.statusCode == 200) {
@@ -137,8 +140,7 @@ mybccApp.controller('SendReceiveBTCCtrl', function($scope, $state, $rootScope, $
         $scope.values.recieverCoinAddress = codeArray[0].replace(/bitcoin:|bitcoin=|btc:|btc=|btcaddress:|btcaddress=|btcaddress:|btcaddress=/g, "").trim();
 
         $scope.values.amount = codeArray[1].replace(/amount:|amount=/g, "").trim();
-      } else if ($scope.getImageData.indexOf(":") > 0 || $scope.getImageData.indexOf("=") > 0) {
-        console.log($scope.getImageData.indexOf("="));
+      } else if ($scope.getImageData.indexOf(":") > 0 || $scope.getImageData.indexOf("=") > 0) {       
         var codeArray = $scope.getImageData;
         var myEl = angular.element(document.querySelector('#focusBtcAddress'));
         myEl.attr('style', 'transform: translateY(-14px);');

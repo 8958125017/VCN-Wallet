@@ -29,8 +29,7 @@
 
 
    // change spending password
-   $scope.newSpendingPassword = function(newSpendingPasswordvalue) {
-     console.log(" password = =" + angular.toJson($scope.newSpendingPasswordvalue))
+   $scope.newSpendingPassword = function(newSpendingPasswordvalue) {    
      if ($scope.newSpendingPasswordvalue.newSpendingPassword == "") {
        var alertPopup = $ionicPopup.alert({
          title: "please enter new password",
@@ -43,8 +42,7 @@
        Materialize.toast("internet is disconnected on your device !!", 4000);
      } else {
        $scope.show($ionicLoading);
-       $scope.newSpendingPasswordvalue.userMailId=getCurrentUserData.email;
-       console.log("$scope.newSpendingPasswordvalue = = " + angular.toJson($scope.newSpendingPasswordvalue));
+       $scope.newSpendingPasswordvalue.userMailId=getCurrentUserData.email;       
        MyPayService.setNewSpendingPassord($scope.newSpendingPasswordvalue).then(function(response) {
          if (response.data.statusCode == 200) {
            $scope.hide($ionicLoading);

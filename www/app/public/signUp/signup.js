@@ -19,12 +19,11 @@ mybccApp.controller('RegistraionCtrl', function($ionicLoading, $scope, $state, i
       });
     } else {
       $scope.show($ionicLoading);
-      MyPayService.createNewUser($scope.user).then(function(response) {
-         console.log("response = = "+angular.toJson(response));
+      MyPayService.createNewUser($scope.user).then(function(response) {         
         if (response.data.statusCode == 200) {
           $scope.hide($ionicLoading);
           var alertPopup = $ionicPopup.alert({
-            title: 'SignUp Successfully Please verify your account first',
+            title: 'SignUp Successfull Please verify your account first',
           });
           $scope.user = {};
           $state.go('userlogin');
@@ -33,14 +32,15 @@ mybccApp.controller('RegistraionCtrl', function($ionicLoading, $scope, $state, i
           var alertPopup = $ionicPopup.alert({
             title: response.data.message,
           });
-          $scope.user = {
-            "name": "",
-            "email": "",
-            "password": "",
-            "confirmPassword": "",
-            "spendingpassword": "",
-            "confirmSpendingpassword": "",
-          }
+           $state.go('userlogin');
+          // $scope.user = {
+          //   "name": "",
+          //   "email": "",
+          //   "password": "",
+          //   "confirmPassword": "",
+          //   "spendingpassword": "",
+          //   "confirmSpendingpassword": "",
+          // }
         }
       });
     }

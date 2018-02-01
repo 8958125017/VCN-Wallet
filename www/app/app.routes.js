@@ -53,7 +53,12 @@
         views: {
           'menuContent': {
             templateUrl: 'app/private/dashboard/dashboard.html',
-            controller: 'DashboardCtrl'
+            controller: 'DashboardCtrl',
+            resolve: {
+              getCurrentUserData: function(MyPayService) {
+                return MyPayService.getCurrentUserData();
+              }
+            }
           }
         },
         authenticate: true

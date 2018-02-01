@@ -51,7 +51,7 @@ mybccApp.controller('SendReceiveCryptoCtrl', function($scope,$rootScope, $state,
       });
     } else {
       var alertPopup = $ionicPopup.show({
-        template: '<input type="number" placeholder="pin" ng-model="values.spendingPassword" autofocus>',
+        template: '<input type="number" placeholder="Enter your PIN" ng-model="values.spendingPassword" autofocus>',
         title: 'Enter PIN',
         scope: $scope,
         buttons: [{
@@ -69,13 +69,17 @@ mybccApp.controller('SendReceiveCryptoCtrl', function($scope,$rootScope, $state,
           text: '<b>Submit</b>',
           type: 'button-positive',
           onTap: function(e) {
-            if (ConnectivityMonitor.isOffline()) {
+            if ($scope.values.spendingPassword == "") {
+                     var alertPopup = $ionicPopup.alert({
+                  title: "Please enter pin",
+                 });
+             }
+              else  if (ConnectivityMonitor.isOffline()) {
               Materialize.toast("internet is disconnected on your device !!", 4000);
             } else {
               $scope.show($ionicLoading);
               $scope.values.currency="VCN";
-              $scope.values.userMailId=getCurrentUserData.email;
-              console.log("$scope.values = = "+angular.toJson($scope.values));
+              $scope.values.userMailId=getCurrentUserData.email;           
               MyPayService.sendCoinByUser($scope.values).then(function(response) {
                 if (response.data.statusCode == 200) {
                    MyPayService.CurrntBalance($scope.emailId).then(function(response) {       

@@ -37,8 +37,7 @@ mybccApp.controller('LoginCtrl', function($ionicLoading, $timeout, $scope, $root
       $rootScope = {};
       $localStorage.$reset();
       $scope.show($ionicLoading);
-      MyPayService.loginUser($scope.user).then(function(response) {   
-      console.log("response "+angular.toJson(response));   
+      MyPayService.loginUser($scope.user).then(function(response) { 
         if (response.data.statusCode == 200) {    
            $localStorage.credentials = response.data.user;          
            $rootScope.user = $localStorage.credentials; 
@@ -50,7 +49,7 @@ mybccApp.controller('LoginCtrl', function($ionicLoading, $timeout, $scope, $root
               });
              MyPayService.CurrntBalance($scope.emailId).then(function(response) {       
                 if (response.data.statusCode == 200) {
-                  $localStorage.cryptoBalance = response.data;
+                     $localStorage.cryptoBalance = response.data;
                      $rootScope.userBal = $localStorage.cryptoBalance;
                  }
              });

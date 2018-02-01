@@ -15,8 +15,7 @@ mybccApp.controller('CryptoVaultCtrl', ['$rootScope', '$scope', '$cordovaClipboa
             $rootScope.userBal = $localStorage.cryptoBalance;
         }
       });    
-  $scope.shareAddress = function(address) {
-    console.log("text shareAddress" + address);
+  $scope.shareAddress = function(address) {   
     // Show the action sheet
     var hideSheet = $ionicActionSheet.show({
       buttons: [{
