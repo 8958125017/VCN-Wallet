@@ -1,40 +1,31 @@
 <ion-view view-title="Get VCN">
   <ion-content style="overflow-y: auto !important;">
-    <div class="row center responsive-sm">
-      <div class="col center">
-        <img src="http://chart.apis.google.com/chart?cht=qr&chs=260x260&chl={{cmpBtcAddress}}" alt="QR Code" style="margin-top: -28px">
-        <div class="row no-margin responsive-sm">
-          <span>
-                          {{cmpBtcAddress}}
-                        </span>
-        </div>
-        <div class="row no-margin responsive-sm">
-          <div class="col s12 center">
-            <strong class="green-white">1 VCN ={{usdRate}} BTC</strong>
-          </div>
-        </div>
+     <div class="primary-color white-text padding-top ">
+      <div class="row center no-margin">
+        <h5 class="center col white-text text-roboto">1 {{baseCoin}}={{usdRate}} {{targetCoin}} </h5>
       </div>
+
     </div>
 
 
-    <form class="col s12 center" name="frm" novalidate style="margin-top: -50px">
+  <div class="row">
+      <form class="col s12 center" name="frm" novalidate ">
 
-      <div class="row no-margin form-group">
-        <div class="custom-input-focus-color input-field col s12">
-
-          <input type="number" class="form-control validate" ng-model="VCNtxDetail.amount" step="0.00001" name="amount" autocomplete="off" required ng-change="myFunc(VCNtxDetail.amount)">
+        <div class="row">
+          <div class="input-field col s12">
+           <input type="number" class="form-control validate" ng-model="VCNtxDetail.amount" step="0.00001" name="amount" autocomplete="off" required ng-change="myFunc(VCNtxDetail.amount)">
           <label for="amount" class="col center ">Amount({{targetCoin}})</label>
-          <span style="text-align: right;"><b>Total VCN Receive : {{btcindollor.btcDoller| number:7}} VCN </b></span></br>
+          <span style="text-align: right;"><b>You will get : {{btcindollor.btcDoller| number:7}} VCN </b></span></br>
           <span style="color:red;" ng-show="frm.amount.$dirty &&frm.amount.$error.required">Amout Should Not be Empty</span>
+          </div>
         </div>
-      </div>
+        
+        <button class="btn waves-effect waves-light primary-color white-text" type="submit" name="action" ng-disabled="frm.$invalid"  ng-click="shareRequestForVCN(VCNtxDetail)">Send
+                    <i class="material-icons right">send</i>
+                  </button>
+      </form>
+    </div>
 
-      <br>
-      <button class="btn waves-effect waves-light light-blue-text darken-4-text white" type="submit" name="action" ng-disabled="frm.$invalid" ng-click="shareRequestForVCN(VCNtxDetail)">Send
-        <i class="material-icons right">send</i>
-      </button>
-
-    </form>
-
+   
   </ion-content>
 </ion-view>

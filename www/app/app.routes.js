@@ -1,12 +1,14 @@
  mybccApp.config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
     .state('tour', {
+      cache: false,
       url: '/tour',
       templateUrl: 'app/public/tour/tour.html',
       controller: 'TourCtrl',
        authenticate: false
     })
       .state('userlogin', {
+        cache: false,
         url: '/userlogin',
         templateUrl: 'app/public/signIn/login.html',
         controller: 'LoginCtrl',
@@ -14,6 +16,7 @@
       })
 
       .state('signup', {
+        cache: false,
         url: '/signup',
         templateUrl: 'app/public/signUp/signup.html',
         controller: 'RegistraionCtrl',
@@ -21,6 +24,7 @@
       })
 
       .state('forgotPassword', {
+        cache: false,
         url: '/forgotPassword',
         templateUrl: 'app/public/forgotPassword/forgotPassword.html',
         controller: 'ForgotPasswordCtrl',
@@ -28,12 +32,14 @@
       })
 
       .state('changePassword', {
+        cache: false,
         url: '/changePassword',
         templateUrl: 'app/public/forgotPassword/changePassword.html',
         controller: 'ForgotPasswordCtrl',
         authenticate: false
       })   
       .state('app', {
+        cache: false,
         url: '/app',
         abstract: true,
         templateUrl: 'app/private/menu.html',
@@ -41,7 +47,8 @@
         authenticate: true
       })
 
-      .state('app.dashboard', {
+      .state('app.dashboard', {    
+      cache: false,    
         url: '/dashboard',
         views: {
           'menuContent': {
@@ -55,6 +62,7 @@
 
       
       .state('app.btcvault', {
+        cache: false,
         url: '/btcvault',
         views: {
           'menuContent': {
@@ -66,6 +74,7 @@
       })
 
       .state('app.cryptovault', {
+        cache: false,
         url: '/cryptovault',
         views: {
           'menuContent': {
@@ -77,6 +86,7 @@
       })
 
       .state('app.requestBTC', {
+        cache: false,
         url: '/requestBTC',
         views: {
           'menuContent': {
@@ -88,6 +98,7 @@
       })
 
       .state('app.requestcrypto', {
+        cache: false,
         url: '/requestcrypto',
         views: {
           'menuContent': {
@@ -101,6 +112,7 @@
 
 
       .state('app.sendreciveBTC', {
+        cache: false,
         url: '/sendreciveBTC',
         views: {
           'menuContent': {
@@ -117,6 +129,7 @@
       })
 
       .state('app.sendreceivecrypto', {
+        cache: false,
         url: '/sendreceivecrypto',
         views: {
           'menuContent': {
@@ -133,6 +146,7 @@
       })
 
       .state('app.setting', {
+        cache: false,
         url: '/setting',
         views: {
           'menuContent': {
@@ -149,6 +163,7 @@
       })
 
        .state('app.changeCurrentPassword', {
+        cache: false,
         url: '/changeCurrentPassword',
         views: {
           'menuContent': {
@@ -166,6 +181,7 @@
 
 
       .state('app.changeSpendingPassword', {
+        cache: false,
         url: '/changeSpendingPassword',
         views: {
           'menuContent': {
@@ -183,6 +199,7 @@
 
 
       .state('app.btcsent', {
+        cache: false,
         url: '/btcsent',
         views: {
           'menuContent': {
@@ -199,6 +216,7 @@
       })
 
       .state('app.btcreceived', {
+        cache: false,
         url: '/btcreceived',
         views: {
           'menuContent': {
@@ -215,6 +233,7 @@
       })
 
        .state('app.getCrypto', {
+         cache: false,
         url: '/getCrypto',
         views: {
           'menuContent': {
@@ -232,6 +251,7 @@
 
 
       .state('app.bchsent', {
+         cache: false,
         url: '/bchsent',
         views: {
           'menuContent': {
@@ -248,6 +268,7 @@
       })
 
       .state('app.bchreceived', {
+         cache: false,
         url: '/bchreceived',
         views: {
           'menuContent': {

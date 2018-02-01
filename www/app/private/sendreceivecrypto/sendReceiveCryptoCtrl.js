@@ -26,8 +26,8 @@ mybccApp.controller('SendReceiveCryptoCtrl', function($scope,$rootScope, $state,
     $ionicLoading.hide();
   };
   $scope.values = {
-    "currency":"VCN",
-    "userMailId": getCurrentUserData.email,
+    "currency":"",
+    "userMailId": "",
     "amount": "",
     "spendingPassword": "",
     "recieverCoinAddress": ""
@@ -73,6 +73,7 @@ mybccApp.controller('SendReceiveCryptoCtrl', function($scope,$rootScope, $state,
               Materialize.toast("internet is disconnected on your device !!", 4000);
             } else {
               $scope.show($ionicLoading);
+              $scope.values.currency="VCN";
               $scope.values.userMailId=getCurrentUserData.email;
               console.log("$scope.values = = "+angular.toJson($scope.values));
               MyPayService.sendCoinByUser($scope.values).then(function(response) {
@@ -146,9 +147,9 @@ mybccApp.controller('SendReceiveCryptoCtrl', function($scope,$rootScope, $state,
       buttons: [{
           text: 'whatsapp'
         },
-        {
-          text: 'facebook'
-        },
+        // {
+        //   text: 'facebook'
+        // },
         {
           text: 'message'
         }
@@ -166,12 +167,12 @@ mybccApp.controller('SendReceiveCryptoCtrl', function($scope,$rootScope, $state,
             alert("Error: Cannot Share")
           });
         }
+        // if (index === 1) {
+        //   window.plugins.socialsharing.shareViaFacebook(address, null /* img */ , null /* url */ , null, function(errormsg) {
+        //     alert("Error: Cannot Share")
+        //   });
+        // }
         if (index === 1) {
-          window.plugins.socialsharing.shareViaFacebook(address, null /* img */ , null /* url */ , null, function(errormsg) {
-            alert("Error: Cannot Share")
-          });
-        }
-        if (index === 2) {
           window.plugins.socialsharing.shareViaSMS(address, null /* img */ , null /* url */ , null, function(errormsg) {
             alert("Error: Cannot Share")
           });
@@ -217,7 +218,7 @@ mybccApp.controller('SendReceiveCryptoCtrl', function($scope,$rootScope, $state,
         var trim2 = $scope.amountSend.split(':');
         console.log("trim2 " + trim2);
 
-        $scope.values.recieverBCHCoinAddress = trim2[1];
+        $scope.values.recieverCoinAddress = trim2[1];
       } else if ($scope.getImageData.indexOf(":") > 0) {
         var codeArray = $scope.getImageData;
         var myEl = angular.element(document.querySelector('#focusBchAddress'));
@@ -225,9 +226,9 @@ mybccApp.controller('SendReceiveCryptoCtrl', function($scope,$rootScope, $state,
 
         $scope.address = codeArray.replace(/bitcoincash:|bitcoincash=|bch:|bch=|bcc:|bcc=|bchaddress:|bchaddress=|bccaddress:|bccaddress=/g, "").trim();
         var trim1 = $scope.address.split(':');
-        $scope.values.recieverBCHCoinAddress = trim1[1];
+        $scope.values.recieverCoinAddress = trim1[1];
       } else {
-        $scope.values.recieverBCHCoinAddress = $scope.getImageData;
+        $scope.values.recieverCoinAddress = $scope.getImageData;
         var myEl = angular.element(document.querySelector('#focusBchAddress'));
         myEl.attr('style', 'transform: translateY(-14px);');
 

@@ -32,7 +32,7 @@ var mybccApp = angular.module('starter', ['ionic', 'ngCordova', 'ionic-material'
     });
 
     $ionicPlatform.registerBackButtonAction(function() {
-      if ($state.current.name == "app.dashboard") {
+      if ($state.current.name == "app.dashboard" || $state.current.name == "app.userlogin") {
         var confirmPopup = $ionicPopup.confirm({
           template: 'Are you sure you want to exit?'
         });

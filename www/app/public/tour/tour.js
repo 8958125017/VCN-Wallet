@@ -2,13 +2,13 @@ mybccApp.controller('TourCtrl', function($rootScope, $scope, $location, $ionicPo
 
   $scope.login = function() {
     localStorage.setItem('firstVisit', '1');
-    $location.url('/');
-    $state.go('userlogin');
+     $location.url('/userlogin');
+    // $state.go('userlogin');
   }
   $scope.signUp = function() {
     localStorage.setItem('firstVisit', '1');
-    $location.url('/');
-    $state.go('signup');
+    $location.url('/signup');
+   // $state.go('signup');
   }
 
 });

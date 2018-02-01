@@ -1,4 +1,5 @@
 mybccApp.controller('LoginCtrl', function($ionicLoading, $timeout, $scope, $rootScope, $state, ionicMaterialInk, ConnectivityMonitor, MyPayService, $localStorage, $ionicPopup, AuthService) {
+
   ionicMaterialInk.displayEffect();
   $scope.show = function() {
     $ionicLoading.show({
@@ -17,9 +18,13 @@ mybccApp.controller('LoginCtrl', function($ionicLoading, $timeout, $scope, $root
   }
 
   $scope.user = {
-    "email": "pankajjoshi115@gmail.com",
-    "password": "p@nk@j30SKH02"
+    "email": "",
+    "password": ""
   }
+  //  $scope.user = {
+  //   "email": "pankajjoshi115@gmail.com",
+  //   "password": "p@nk@j30SKH02"
+  // }
 
    $scope.emailId = {
        "userMailId": ""

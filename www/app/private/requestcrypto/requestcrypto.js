@@ -8,9 +8,9 @@ mybccApp.controller('RequestCryptoCtrl', function($rootScope, $scope, $localStor
       buttons: [{
           text: 'whatsapp'
         },
-        {
-          text: 'facebook'
-        },
+        // {
+        //   text: 'facebook'
+        // },
         {
           text: 'message'
         }
@@ -28,12 +28,12 @@ mybccApp.controller('RequestCryptoCtrl', function($rootScope, $scope, $localStor
             alert("Error: Cannot Share");
           });
         }
+        // if (index === 1) {
+        //   window.plugins.socialsharing.shareViaFacebook(address, null /* img */ , null /* url */ , null, function(errormsg) {
+        //     alert("Error: Cannot Share")
+        //   });
+        // }
         if (index === 1) {
-          window.plugins.socialsharing.shareViaFacebook(address, null /* img */ , null /* url */ , null, function(errormsg) {
-            alert("Error: Cannot Share")
-          });
-        }
-        if (index === 2) {
           window.plugins.socialsharing.shareViaSMS(address, null /* img */ , null /* url */ , null, function(errormsg) {
             alert("Error: Cannot Share")
           });

@@ -1,4 +1,4 @@
-mybccApp.controller('AccountBTCStatementCtrl', function($ionicLoading, $scope, ConnectivityMonitor, $localStorage, $ionicPopup, MyPayService, ionicMaterialInk,getCurrentUserData ) {
+mybccApp.controller('AccountBTCStatementCtrl', function($ionicLoading,$state, $scope, ConnectivityMonitor, $localStorage, $ionicPopup, MyPayService, ionicMaterialInk,getCurrentUserData ) {
   ionicMaterialInk.displayEffect();
   $scope.show = function() {
     $ionicLoading.show({
@@ -8,15 +8,18 @@ mybccApp.controller('AccountBTCStatementCtrl', function($ionicLoading, $scope, C
   $scope.hide = function() {
     $ionicLoading.hide();
   };
-  $scope.emailId = {
-    "userMailId": getCurrentUserData.email
+  $scope.values = {
+    "currency":"",
+    "userMailId": ""
   }
 
   if (ConnectivityMonitor.isOffline()) {
     Materialize.toast("internet is disconnected on your device !!", 4000);
   } else {
     $scope.show($ionicLoading);
-    MyPayService.getBTCTransactions($scope.emailId).then(function(response) {
+    $scope.values.currency="BTC";
+    $scope.values.userMailId=getCurrentUserData.email;
+    MyPayService.getCoinTransactionsList($scope.values).then(function(response) {
       console.log("Response :: " + angular.toJson(response));
       if (response.data.statusCode == 200) {
         $scope.hide($ionicLoading);
@@ -24,11 +27,13 @@ mybccApp.controller('AccountBTCStatementCtrl', function($ionicLoading, $scope, C
         if ($scope.data.length == 0) {
           $scope.noData = true;
         }
-      } else if (response.statusCode >= 400) {
+      } else {
         $scope.hide($ionicLoading);
         var alertPopup = $ionicPopup.alert({
           title: response.data.message,
+
         });
+         
       }
     });
   }

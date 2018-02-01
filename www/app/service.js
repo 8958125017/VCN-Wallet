@@ -256,21 +256,23 @@ angular.module('mypayservice', [])
       });
     };
 
+MyPayService.getCoinTransactionsList = function(emailId) {
+      //console.log(emailId);
+      return $http.post(constants.VcnApiurl + '/user/txnlist', emailId, {
+        headers: {
+          'Content-Type': 'application/json;charset=UTF-8'
+        }
+      }).then(function(response) {
+        //console.log(response);
+        return response;
+        //console.log(response);
+      });
+    };
 
-
-
-
-
-
-
-
-
-
-   
 
      MyPayService.VCNtransactions = function(user) {
       console.log("user  == = " + angular.toJson(user));
-      return $http.post(constants.apiurl + '/transaction/requestToConvertBTC', user, {
+      return $http.post(constants.VcnApiurl + '/user/getvcn', user, {
         headers: {
           'Content-Type': 'application/json;charset=UTF-8'
         }

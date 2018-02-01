@@ -24,7 +24,7 @@ mybccApp.controller('RegistraionCtrl', function($ionicLoading, $scope, $state, i
         if (response.data.statusCode == 200) {
           $scope.hide($ionicLoading);
           var alertPopup = $ionicPopup.alert({
-            title: 'SignUp successfully',
+            title: 'SignUp Successfully Please verify your account first',
           });
           $scope.user = {};
           $state.go('userlogin');

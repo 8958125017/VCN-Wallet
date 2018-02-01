@@ -16,17 +16,17 @@
         <div class="custom-input-focus-color input-field col s12">
           <input type="text" class="form-control validate white-text" placeholder="User Name" ng-model="user.name" name="name" autocomplete="off" required>
           <span ng-show="frm.name.$dirty && frm.name.$invalid">
-       <span style="color:red;" ng-show="frm.name.$error.required">User Name is Required</span>
+       <span style="color:red;" ng-show="frm.name.$error.required">User name is required</span>
           </span>
         </div>
       </div>
 
       <div class="row no-margin form-group">
         <div class="custom-input-focus-color input-field col s12">
-          <input type="email" class="form-control validate white-text" placeholder="Email" ng-model="user.email" name="email" autocomplete="off" required>
+          <input type="email" class="form-control validate white-text" placeholder="Email" ng-pattern="/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/" ng-model="user.email" name="email" autocomplete="off" required>
           <span ng-show="frm.email.$dirty && frm.email.$invalid">
-         <span style="color:red;" ng-show="frm.email.$error.required">Email is Required</span>
-          <span style="color:red;" ng-show="!frm.email.$error.required && frm.email.$dirty && frm.email.$invalid">Email Address is not valid</span>
+         <span style="color:red;" ng-show="frm.email.$error.required">Email is required</span>
+          <span style="color:red;" ng-show="!frm.email.$error.required && frm.email.$dirty && frm.email.$invalid">Email address is not valid</span>
         </div>
       </div>
 
@@ -37,7 +37,7 @@
           <input type="password" class="form-control validate white-text" ng-model="user.password" placeholder="Password" ng-change="validationInputPwdText(user.password)" name="password" autocomplete="off" ng-minlength="6" ng-maxlength="20" required>
           <span ng-style="checkpwdStrength">{{passStrength}}</span>
           <span ng-show="frm.password.$dirty && frm.password.$invalid">
-                <span style="color:red;" ng-show="frm.password.$error.required">Password is Required</span>
+                <span style="color:red;" ng-show="frm.password.$error.required">Password is required</span>
           <span style="color:red;" ng-show="frm.password.$dirty && frm.password.$error.minlength">Password should be  6 charecters</span>
           <span style="color:red;" ng-show="frm.password.$dirty && frm.password.$error.maxlength">Max-length of password reached</span>
         </div>
@@ -56,7 +56,7 @@
 
       <div class="row no-margin form-group">   
         <div class="custom-input-focus-color input-field col s12">
-          <input type="number" class="form-control validate white-text" ng-model="user.spendingpassword"  placeholder="PIN" name="spendingpassword" autocomplete="off" ng-minlength="6" ng-maxlength="6" required> 
+          <input type="number" class="form-control validate white-text" ng-model="user.spendingpassword"  placeholder="PIN" name="spendingpassword" autocomplete="off" ng-minlength="6" ng-maxlength="6" > 
           <span ng-show="frm.spendingpassword.$dirty && frm.spendingpassword.$invalid">  
            <span style="color:red;" ng-show="frm.spendingpassword.$error.required">PIN is Required</span>       
           <span style="color:red;" ng-show="frm.spendingpassword.$dirty && frm.spendingpassword.$error.minlength">PIN should be  6 digits</span>
@@ -74,7 +74,7 @@
 
 
       <button class="btn waves-effect waves-light light-blue-text darken-4-text white" type="submit" name="action" ng-disabled="frm.$invalid" ng-click="createNewUser(user)">Get Started
-        <i class="material-icons right">send</i>
+      <!--   <i class="material-icons right">send</i> -->
       </button>
 
     </form>
