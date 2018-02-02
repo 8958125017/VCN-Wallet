@@ -42,7 +42,7 @@
          if (response.data.statusCode == 200) {
            $scope.hide($ionicLoading);
            var alertPopup = $ionicPopup.alert({
-             title: "Current Password Change successfully",
+             title: "Your password updated successfully",
            });
            $scope.passwordValue = {
              "newPassword": "",

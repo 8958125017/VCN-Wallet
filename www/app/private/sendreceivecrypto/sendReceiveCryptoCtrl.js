@@ -51,7 +51,7 @@ mybccApp.controller('SendReceiveCryptoCtrl', function($scope,$rootScope, $state,
       });
     } else {
       var alertPopup = $ionicPopup.show({
-        template: '<input type="number" placeholder="Enter your PIN" ng-model="values.spendingPassword" autofocus>',
+        template: '<input type="password" placeholder="Enter your PIN" ng-model="values.spendingPassword" autofocus maxlength="6" autofocus numbersOnly>',
         title: 'Enter PIN',
         scope: $scope,
         buttons: [{

@@ -16,10 +16,10 @@ mybccApp.controller('DashboardCtrl', function($rootScope, $scope, $ionicPopup, $
   $scope.hide = function() {
     $ionicLoading.hide();
   };
-      if (ConnectivityMonitor.isOffline()) {
-      Materialize.toast("internet is disconnected on your device !!", 4000);
-    } else {
-        $scope.show($ionicLoading);
+    //   if (ConnectivityMonitor.isOffline()) {
+    //   Materialize.toast("internet is disconnected on your device !!", 4000);
+    // } else {
+       // $scope.show($ionicLoading);
         MyPayService.CurrntBalance($scope.emailId).then(function(response) {       
         if (response.data.statusCode == 200) {
            $scope.hide($ionicLoading);
@@ -34,7 +34,7 @@ mybccApp.controller('DashboardCtrl', function($rootScope, $scope, $ionicPopup, $
                $rootScope.usdRate = response.currentBTCprice;          
                } 
           });
-    }
+  //  }
 
   $scope.doRefresh = function() {
     $timeout(function() {     

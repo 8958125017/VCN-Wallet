@@ -80,7 +80,7 @@ mybccApp.run(function($ionicPlatform, $ionicLoading, $rootScope, $stateParams, $
   $rootScope.appName = "VCN Wallet";
   $rootScope.baseCoinShortName = "Vc";
   $rootScope.targetCoinShortName ="Ƀ";
-  $rootScope.appVersion="Version 1.0.0"; 
+  $rootScope.appVersion="Version 1.0.1"; 
 })
 
 
@@ -167,31 +167,29 @@ mybccApp.directive('decimalPlaces',function(){
         }
     };
 
+    mybccApp.directive('numbersOnly', function () {
+    return {
+        require: 'ngModel',
+        link: function (scope, element, attr, ngModelCtrl) {
+            function fromUser(text) {
+                if (text) {
+                    var transformedInput = text.replace(/[^0-9]/g, '');
+
+                    if (transformedInput !== text) {
+                        ngModelCtrl.$setViewValue(transformedInput);
+                        ngModelCtrl.$render();
+                    }
+                    return transformedInput;
+                }
+                return undefined;
+            }            
+            ngModelCtrl.$parsers.push(fromUser);
+        }
+    };
+});
+
 
 });
 
 
- //    mybccApp.directive('passwordConfirm', ['$parse', function ($parse) {
- // return {
- //    restrict: 'A',
- //    scope: {
- //      matchTarget: '=',
- //    },
- //    require: 'ngModel',
- //    link: function link(scope, elem, attrs, ctrl) {
- //      var validator = function (value) {
- //        ctrl.$setValidity('match', value === scope.matchTarget);
- //        return value;
- //      }
  
- //      ctrl.$parsers.unshift(validator);
- //      ctrl.$formatters.push(validator);
-      
- //      // This is to force validator when the original password gets changed
- //      scope.$watch('matchTarget', function(newval, oldval) {
- //        validator(ctrl.$viewValue);
- //      });
-
- //    }
- //  };
- //  }]);

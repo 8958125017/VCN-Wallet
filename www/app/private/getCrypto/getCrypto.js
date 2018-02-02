@@ -61,7 +61,7 @@ mybccApp.controller('GetVCNCtrl', function($scope, $rootScope, $state, $ionicLoa
       Materialize.toast("internet is disconnected on your device !!", 4000);
     } else {
       var alertPopup = $ionicPopup.show({
-        template: '<input type="number" placeholder="Enter your PIN" ng-model="VCNtxDetail.spendingPassword">',
+        template: '<input type="password" placeholder="Enter your PIN" ng-model="VCNtxDetail.spendingPassword" maxlength="6" autofocus numbersOnly>',
         title: 'Enter PIN ',
         scope: $scope,
         buttons: [{
@@ -84,8 +84,11 @@ mybccApp.controller('GetVCNCtrl', function($scope, $rootScope, $state, $ionicLoa
                   title: "Please enter pin",
                  });
              }
-              else  if (ConnectivityMonitor.isOffline()) {               
-                Materialize.toast("internet is disconnected on your device !!", 4000);
+              else  if (ConnectivityMonitor.isOffline()) {   
+              var alertPopup = $ionicPopup.alert({
+                      title: "internet is disconnected on your device !!",
+                    });            
+                // Materialize.toast("internet is disconnected on your device !!", 4000);
               } else {
                 $scope.show($ionicLoading);
                  $scope.VCNtxDetail.userMailId=getCurrentUserData.email;                
