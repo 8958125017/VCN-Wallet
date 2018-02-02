@@ -11,11 +11,15 @@ mybccApp.controller('GetVCNCtrl', function($scope, $rootScope, $state, $ionicLoa
   $scope.hide = function() {
     $ionicLoading.hide();
   };
-   $scope.show($ionicLoading);
+   
    $scope.emailId = {
        "userMailId": ""
   }
   $scope.emailId.userMailId=getCurrentUserData.email;
+    if (ConnectivityMonitor.isOffline()) {
+      Materialize.toast("internet is disconnected on your device !!", 4000);
+    } else {
+          $scope.show($ionicLoading);
    MyPayService.CurrntBalance($scope.emailId).then(function(response) {       
         if (response.data.statusCode == 200) {
           $scope.hide($ionicLoading);   
@@ -35,7 +39,7 @@ mybccApp.controller('GetVCNCtrl', function($scope, $rootScope, $state, $ionicLoa
                $rootScope.vcnRate = response.askRate; 
                } 
           });
-  
+  }
 
   $scope.init = function() {
     $scope.isDisable = true;
