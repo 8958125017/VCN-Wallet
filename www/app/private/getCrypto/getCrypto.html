@@ -5,7 +5,7 @@
         <h4 class="col white-text no-margin text-roboto"><span class="crypto-icon crypto-vault-symbol">{{targetCoinShortName}}&nbsp;</span>{{userBal.BTCBalance | number:7}}</h4>
          </div>
       <div class="row center no-margin">
-        <h5 class="center col white-text text-roboto">1 {{baseCoin}}={{usdRate}} {{targetCoin}} </h5>
+        <h5 class="center col white-text text-roboto">1 {{baseCoin}} = {{usdRate}} {{targetCoin}} </h5>
       </div>
 
     </div>
@@ -19,7 +19,7 @@
            <input type="number" class="form-control validate" ng-model="VCNtxDetail.amount" step="0.00001" name="amount" autocomplete="off" required ng-change="myFunc(VCNtxDetail.amount)">
           <label for="amount" class="col center ">Amount({{targetCoin}})</label>
           <span style="text-align: right;"><b>You will get : {{btcindollor.btcDoller| number:7}} VCN </b></span></br>
-          <span style="color:red;" ng-show="frm.amount.$dirty &&frm.amount.$error.required">Amout Should Not be Empty</span>
+          <span style="color:red;" ng-show="frm.amount.$dirty &&frm.amount.$error.required">Amount should not be empty</span>
           </div>
         </div>
         

@@ -38,15 +38,19 @@ mybccApp.controller('SendReceiveBTCCtrl', function($scope, $state, $rootScope, $
   }
 
   $scope.sendBTCCoinByUser = function() {
+    //debugger;
+    console.log("$scope.values.amount = = "+$scope.values.amount)
     if ($scope.values.recieverCoinAddress == "") {
       var alertPopup = $ionicPopup.alert({
         title: "please enter address",
       });
-    } else if ($scope.values.amount == "") {
+    }
+     else if ($scope.values.amount == "") {
       var alertPopup = $ionicPopup.alert({
         title: "please enter amount",
       });
-    } else {
+    } 
+   else {
       var alertPopup = $ionicPopup.show({
         template: '<input type="password" placeholder="Enter your PIN" ng-model="values.spendingPassword" required maxlength="6" autofocus numbersOnly>',
         title: 'Enter PIN ',

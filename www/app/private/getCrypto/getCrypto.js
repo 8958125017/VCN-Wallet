@@ -68,8 +68,7 @@ mybccApp.controller('GetVCNCtrl', function($scope, $rootScope, $state, $ionicLoa
             text: 'Cancel',
             onTap: function(e) {
               $scope.VCNtxDetail = {
-                "userMailId": "",
-                "amount": "",
+                
                 "spendingPassword": ""
               };
               return true;

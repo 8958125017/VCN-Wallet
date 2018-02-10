@@ -26,7 +26,7 @@
        $scope.passStrength = "medium";
      } else {
        $scope.checkpwdStrength["background-color"] = "red";
-       $scope.passStrength = "week";
+       $scope.passStrength = "weak";
      }
    };
 
