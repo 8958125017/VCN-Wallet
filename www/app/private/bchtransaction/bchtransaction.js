@@ -16,9 +16,10 @@ mybccApp.controller('AccountBCHStatementCtrl', function($ionicLoading, Connectiv
     Materialize.toast("internet is disconnected on your device !!", 4000);
   } else {
     $scope.show($ionicLoading);
-    $scope.values.currency="BTC";
+    $scope.values.currency="VCN";
     $scope.values.userMailId=getCurrentUserData.email;
     MyPayService.getCoinTransactionsList($scope.values).then(function(response) {     
+     console.log(" vcn transaction list"+angular.toJson(response)) ;
       if (response.data.statusCode == 200) {
         $scope.hide($ionicLoading);
         $scope.data = response.data.tx;       
@@ -38,7 +39,7 @@ mybccApp.controller('AccountBCHStatementCtrl', function($ionicLoading, Connectiv
   $scope.transDetails = function(id) {
     $scope.id = id;
     var confirmPopup = $ionicPopup.confirm({
-      title: 'Transaction Details',
+      title: 'Transaction Id',
       scope: $scope,
       template: '<div class="center" style="font-size:12px" ng-click="copyTransactionAddress(id)">' + id + '</div>'
     });

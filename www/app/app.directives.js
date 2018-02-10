@@ -80,7 +80,7 @@ mybccApp.run(function($ionicPlatform, $ionicLoading, $rootScope, $stateParams, $
   $rootScope.appName = "VCN Wallet";
   $rootScope.baseCoinShortName = "Vc";
   $rootScope.targetCoinShortName ="Ƀ";
-  $rootScope.appVersion="Version 1.0.1"; 
+  $rootScope.appVersion="Version 1.1.1"; 
 })
 
 

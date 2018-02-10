@@ -257,7 +257,7 @@ angular.module('mypayservice', [])
     };
 
 MyPayService.getCoinTransactionsList = function(emailId) {
-      //console.log(emailId);
+    // debugger
       return $http.post(constants.VcnApiurl + '/user/txnlist', emailId, {
         headers: {
           'Content-Type': 'application/json;charset=UTF-8'
